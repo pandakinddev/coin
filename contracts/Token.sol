@@ -372,8 +372,8 @@ contract Token is Context, IERC20, Ownable,AccessControlEnumerable, Pausable {
             uint256
         )
     {
-        uint256 rAmount = tAmount + currentRate;
-        uint256 rFee = tFee + currentRate;
+        uint256 rAmount = tAmount * currentRate;
+        uint256 rFee = tFee * currentRate;
         uint256 rLiquidity = tLiquidity * currentRate;
         uint256 rTransferAmount = rAmount - rFee - rLiquidity;
         return (rAmount, rTransferAmount, rFee);
