@@ -70,7 +70,9 @@ contract Token is Context, IERC20, Ownable,AccessControlEnumerable, Pausable {
         inSwapAndLiquify = false;
     }
 
-    constructor() {
+    constructor(address _airdrop, address _whiteList) {
+        _pAirdrop = _airdrop;
+        _pWhiteList = _whiteList;
         _rOwned[_msgSender()] = _rTotal;
 
         IUniswapV2Router02 _uniswapV2Router =
