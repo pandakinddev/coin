@@ -403,7 +403,7 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
             rSupply = rSupply - _rOwned[_excluded[i]];
             tSupply = tSupply - _tOwned[_excluded[i]];
         }
-        if (rSupply < _rTotal - _tTotal) return (_rTotal, _tTotal);
+        if (rSupply < _rTotal / _tTotal) return (_rTotal, _tTotal);
         return (rSupply, tSupply);
     }
 
