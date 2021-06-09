@@ -11,10 +11,10 @@ import "./interfaces/IUniswapV2Factory.sol";
 import "./interfaces/IUniswapV2Router02.sol";
 
 // TODO: whitelist contract must be allowed to transfer tokens
-// TODO: token must be paused, only whitelist contract and airdropn contract must 
+// TODO: token must be paused, only whitelist contract and airdropn contract must
 // be able to transfer tokens
 
-contract Token is Context, IERC20, Ownable,AccessControlEnumerable, Pausable {
+contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
     using Address for address;
@@ -116,7 +116,7 @@ contract Token is Context, IERC20, Ownable,AccessControlEnumerable, Pausable {
         returns (bool)
     {
         // when paused transfer can be done only by airdrop
-        if (_msgSender() != _pAirdrop){
+        if (_msgSender() != _pAirdrop) {
             require(!paused(), "Token transfer while paused");
         }
         _transfer(_msgSender(), recipient, amount);
@@ -147,14 +147,14 @@ contract Token is Context, IERC20, Ownable,AccessControlEnumerable, Pausable {
         uint256 _amount
     ) public override returns (bool) {
         // when paused transfer can be done only by airdrop
-        if (_msgSender() != _pWhiteList){
+        if (_msgSender() != _pWhiteList) {
             require(!paused(), "Token transfer while paused");
         }
         _transfer(_sender, _recipient, _amount);
         _approve(
             _sender,
             _msgSender(),
-            _allowances[_sender][_msgSender()] -_amount
+            _allowances[_sender][_msgSender()] - _amount
         );
         return true;
     }
@@ -186,13 +186,21 @@ contract Token is Context, IERC20, Ownable,AccessControlEnumerable, Pausable {
     }
 
     function pause() public virtual {
-        require(hasRole(PAUSER_ROLE, _msgSender()), "HungryPanda: must have pauser role to pause");
+        require(
+            hasRole(PAUSER_ROLE, _msgSender()),
+            "HungryPanda: must have pauser role to pause"
+        );
         _pause();
     }
+
     function unpause() public virtual {
-        require(hasRole(PAUSER_ROLE, _msgSender()), "HungryPanda: must have pauser role to unpause");
+        require(
+            hasRole(PAUSER_ROLE, _msgSender()),
+            "HungryPanda: must have pauser role to unpause"
+        );
         _unpause();
     }
+
     function isExcludedFromReward(address account) public view returns (bool) {
         return _isExcluded[account];
     }
@@ -381,7 +389,7 @@ contract Token is Context, IERC20, Ownable,AccessControlEnumerable, Pausable {
 
     function _getRate() private view returns (uint256) {
         (uint256 rSupply, uint256 tSupply) = _getCurrentSupply();
-        return rSupply - tSupply;
+        return rSupply / tSupply;
     }
 
     function _getCurrentSupply() private view returns (uint256, uint256) {
@@ -416,7 +424,7 @@ contract Token is Context, IERC20, Ownable,AccessControlEnumerable, Pausable {
         view
         returns (uint256)
     {
-        return (_amount *_liquidityFee) / (10**2);
+        return (_amount * _liquidityFee) / (10**2);
     }
 
     function removeAllFee() private {
@@ -443,8 +451,14 @@ contract Token is Context, IERC20, Ownable,AccessControlEnumerable, Pausable {
         address _spender,
         uint256 _amount
     ) private {
-        require(_owner != address(0), "HungryPanda: approve from the zero address");
-        require(_spender != address(0), "HungryPanda: approve to the zero address");
+        require(
+            _owner != address(0),
+            "HungryPanda: approve from the zero address"
+        );
+        require(
+            _spender != address(0),
+            "HungryPanda: approve to the zero address"
+        );
 
         _allowances[_owner][_spender] = _amount;
         emit Approval(_owner, _spender, _amount);
@@ -455,7 +469,10 @@ contract Token is Context, IERC20, Ownable,AccessControlEnumerable, Pausable {
         address to,
         uint256 amount
     ) private {
-        require(from != address(0), "HungryPanda: transfer from the zero address");
+        require(
+            from != address(0),
+            "HungryPanda: transfer from the zero address"
+        );
         require(to != address(0), "HungryPanda: transfer to the zero address");
         require(amount > 0, "Transfer amount must be greater than zero");
         if (from != owner() && to != owner())
@@ -573,7 +590,7 @@ contract Token is Context, IERC20, Ownable,AccessControlEnumerable, Pausable {
             uint256 tLiquidity
         ) = _getValues(tAmount);
         _rOwned[sender] = _rOwned[sender] - rAmount;
-        _rOwned[recipient] = _rOwned[recipient]+ rTransferAmount;
+        _rOwned[recipient] = _rOwned[recipient] + rTransferAmount;
         _takeLiquidity(tLiquidity);
         _reflectFee(rFee, tFee);
         emit Transfer(sender, recipient, tTransferAmount);
@@ -592,7 +609,7 @@ contract Token is Context, IERC20, Ownable,AccessControlEnumerable, Pausable {
             uint256 tFee,
             uint256 tLiquidity
         ) = _getValues(tAmount);
-        _rOwned[sender] = _rOwned[sender]- rAmount;
+        _rOwned[sender] = _rOwned[sender] - rAmount;
         _tOwned[recipient] = _tOwned[recipient] + tTransferAmount;
         _rOwned[recipient] = _rOwned[recipient] + rTransferAmount;
         _takeLiquidity(tLiquidity);
