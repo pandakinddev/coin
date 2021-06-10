@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.4 <0.9.0;
 
-// import "truffle/DeployedAddresses.sol";
+import "truffle/DeployedAddresses.sol";
 // import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "truffle/Assert.sol";
 import "../contracts/Token.sol";
 import "../contracts/Airdrop.sol";
+import "../contracts/WhiteList.sol";
 
 contract AddressMaker {
     function makeAddress(uint256 _salt) internal view returns (address) {
@@ -30,10 +31,12 @@ contract AddressMaker {
 contract TestAirdrop is AddressMaker {
     Token private token;
     Airdrop private airdrop;
+    WhiteList private whiteList;
 
     constructor() {
-        token = new Token("HungryPanda Test Token","HPTT",1000000 ether);
-        airdrop = new Airdrop(address(token), address(this), 1000 ether);
+        airdrop = Airdrop(DeployedAddresses.Airdrop());
+        whiteList = WhiteList(DeployedAddresses.WhiteList());
+        token = Token(DeployedAddresses.Token());
     }
 
     function testAirdropSupply() public {

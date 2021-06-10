@@ -48,7 +48,8 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
     uint256 private _previousLiquidityFee = _liquidityFee;
 
     IUniswapV2Router02 public immutable uniswapV2Router;
-    address public immutable uniswapV2Pair;
+    address public uniswapV2Pair;
+    // address public immutable uniswapV2Pair;
 
     bool inSwapAndLiquify;
     bool public swapAndLiquifyEnabled = true;
@@ -70,16 +71,22 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
         inSwapAndLiquify = false;
     }
 
-    constructor(address _airdrop, address _whiteList) {
+    constructor(address _router, address _airdrop, address _whiteList) Ownable() {
+        // pause as soon as deployed
+        _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
+        _setupRole(PAUSER_ROLE, _msgSender());
+        _setupRole(PAUSER_ROLE, _whiteList);
+        pause();
+
         _pAirdrop = _airdrop;
         _pWhiteList = _whiteList;
         _rOwned[_msgSender()] = _rTotal;
 
         IUniswapV2Router02 _uniswapV2Router =
-            IUniswapV2Router02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+            IUniswapV2Router02(_router);
 
-        uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory())
-            .createPair(address(this), _uniswapV2Router.WETH());
+        // uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory())
+        //     .createPair(address(this), _uniswapV2Router.WETH());
 
         uniswapV2Router = _uniswapV2Router;
 

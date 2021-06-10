@@ -4,3 +4,4 @@ node_modules/
 .address
 migrations/
 build/
+*.log
