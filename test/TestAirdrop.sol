@@ -4,7 +4,7 @@ pragma solidity >=0.8.4 <0.9.0;
 import "truffle/DeployedAddresses.sol";
 // import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "truffle/Assert.sol";
-import "../contracts/Token.sol";
+import "../contracts/PandaToken.sol";
 import "../contracts/Airdrop.sol";
 import "../contracts/WhiteList.sol";
 
@@ -22,6 +22,7 @@ contract AddressMaker {
         return address(uint160(uint256(hash)));
     }
 }
+
 // TODO: test that only airdrop can transfer tokens
 // TODO: test that airdrop can transfer not more than maxAllowen tokens
 // TODO: test airdrop sign verification flow
@@ -29,14 +30,14 @@ contract AddressMaker {
 
 
 contract TestAirdrop is AddressMaker {
-    Token private token;
+    PandaToken private token;
     Airdrop private airdrop;
     WhiteList private whiteList;
 
     constructor() {
         airdrop = Airdrop(DeployedAddresses.Airdrop());
         whiteList = WhiteList(DeployedAddresses.WhiteList());
-        token = Token(DeployedAddresses.Token());
+        token = PandaToken(DeployedAddresses.Token());
     }
 
     function testAirdropSupply() public {

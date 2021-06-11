@@ -7,17 +7,17 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/access/AccessControlEnumerable.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "./interfaces/IUniswapV2Factory.sol";
 import "./interfaces/IUniswapV2Router02.sol";
 
-// TODO: whitelist contract must be allowed to transfer tokens
-// TODO: token must be paused, only whitelist contract and airdropn contract must
-// be able to transfer tokens
-
-contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
-    bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
-
+// WhiteList allowed to transaferFrom while paused
+// Airdrop allowed to transfer while paused
+contract GenricToken is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
+    using SafeMath for uint256;
     using Address for address;
+
+    bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
     address private _pAirdrop;
     address private _pWhiteList;
@@ -29,7 +29,6 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
     mapping(address => bool) private _isExcludedFromFee;
 
     mapping(address => bool) private _isExcluded;
-
     address[] private _excluded;
 
     uint256 private constant MAX = type(uint256).max;
@@ -37,19 +36,18 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
 
-    string private _name = "HungryPanda";
-    string private _symbol = "HGPAN";
+    string private  _pName;
+    string private _pSymbol;
     uint8 private _decimals = 9;
 
-    uint256 public _taxFee = 7;
+    uint256 public _taxFee;
     uint256 private _previousTaxFee = _taxFee;
 
-    uint256 public _liquidityFee = 7;
+    uint256 public _liquidityFee;
     uint256 private _previousLiquidityFee = _liquidityFee;
 
     IUniswapV2Router02 public immutable uniswapV2Router;
-    address public uniswapV2Pair;
-    // address public immutable uniswapV2Pair;
+    address public immutable uniswapV2Pair;
 
     bool inSwapAndLiquify;
     bool public swapAndLiquifyEnabled = true;
@@ -71,22 +69,36 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
         inSwapAndLiquify = false;
     }
 
-    constructor(address _router, address _airdrop, address _whiteList) Ownable() {
-        // pause as soon as deployed
+    constructor(
+        string memory _name,
+        string memory _symbol,
+        uint256 _totalSupply,
+        uint8 _vTaxFee,
+        uint8 _maxTxAmountDiv,
+        address _router, address _airdrop, address _whiteList) {
         _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
         _setupRole(PAUSER_ROLE, _msgSender());
         _setupRole(PAUSER_ROLE, _whiteList);
-        pause();
 
+        _pName = _name;
+        _pSymbol = _symbol;
+        _tTotal = _totalSupply;
+        _rTotal = (MAX - (MAX % _tTotal));
         _pAirdrop = _airdrop;
         _pWhiteList = _whiteList;
+        _taxFee = _vTaxFee;
+        _previousTaxFee = _taxFee;
+        _liquidityFee = _taxFee;
+        _previousLiquidityFee = _liquidityFee;
+        _maxTxAmount = _rTotal.div(_maxTxAmountDiv);
+        numTokensSellToAddToLiquidity = _rTotal.div(_maxTxAmountDiv);
         _rOwned[_msgSender()] = _rTotal;
 
         IUniswapV2Router02 _uniswapV2Router =
             IUniswapV2Router02(_router);
 
-        // uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory())
-        //     .createPair(address(this), _uniswapV2Router.WETH());
+        uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory())
+            .createPair(address(this), _uniswapV2Router.WETH());
 
         uniswapV2Router = _uniswapV2Router;
 
@@ -94,14 +106,16 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
         _isExcludedFromFee[address(this)] = true;
 
         emit Transfer(address(0), _msgSender(), _tTotal);
+        // pause after initialization
+        pause();
     }
 
     function name() public view returns (string memory) {
-        return _name;
+        return _pName;
     }
 
     function symbol() public view returns (string memory) {
-        return _symbol;
+        return _pSymbol;
     }
 
     function decimals() public view returns (uint8) {
@@ -122,7 +136,7 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
         override
         returns (bool)
     {
-        // when paused transfer can be done only by airdrop
+                // when paused transfer can be done only by airdrop
         if (_msgSender() != _pAirdrop) {
             require(!paused(), "Token transfer while paused");
         }
@@ -149,19 +163,22 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
     }
 
     function transferFrom(
-        address _sender,
-        address _recipient,
-        uint256 _amount
+        address sender,
+        address recipient,
+        uint256 amount
     ) public override returns (bool) {
         // when paused transfer can be done only by airdrop
         if (_msgSender() != _pWhiteList) {
             require(!paused(), "Token transfer while paused");
         }
-        _transfer(_sender, _recipient, _amount);
+        _transfer(sender, recipient, amount);
         _approve(
-            _sender,
+            sender,
             _msgSender(),
-            _allowances[_sender][_msgSender()] - _amount
+            _allowances[sender][_msgSender()].sub(
+                amount,
+                "ERC20: transfer amount exceeds allowance"
+            )
         );
         return true;
     }
@@ -174,7 +191,7 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
         _approve(
             _msgSender(),
             spender,
-            _allowances[_msgSender()][spender] + addedValue
+            _allowances[_msgSender()][spender].add(addedValue)
         );
         return true;
     }
@@ -187,25 +204,12 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
         _approve(
             _msgSender(),
             spender,
-            _allowances[_msgSender()][spender] - subtractedValue
+            _allowances[_msgSender()][spender].sub(
+                subtractedValue,
+                "ERC20: decreased allowance below zero"
+            )
         );
         return true;
-    }
-
-    function pause() public virtual {
-        require(
-            hasRole(PAUSER_ROLE, _msgSender()),
-            "HungryPanda: must have pauser role to pause"
-        );
-        _pause();
-    }
-
-    function unpause() public virtual {
-        require(
-            hasRole(PAUSER_ROLE, _msgSender()),
-            "HungryPanda: must have pauser role to unpause"
-        );
-        _unpause();
     }
 
     function isExcludedFromReward(address account) public view returns (bool) {
@@ -223,9 +227,9 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
             "Excluded addresses cannot call this function"
         );
         (uint256 rAmount, , , , , ) = _getValues(tAmount);
-        _rOwned[sender] = _rOwned[sender] - rAmount;
-        _rTotal = _rTotal - rAmount;
-        _tFeeTotal = _tFeeTotal + tAmount;
+        _rOwned[sender] = _rOwned[sender].sub(rAmount);
+        _rTotal = _rTotal.sub(rAmount);
+        _tFeeTotal = _tFeeTotal.add(tAmount);
     }
 
     function reflectionFromToken(uint256 tAmount, bool deductTransferFee)
@@ -253,7 +257,7 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
             "Amount must be less than total reflections"
         );
         uint256 currentRate = _getRate();
-        return rAmount / currentRate;
+        return rAmount.div(currentRate);
     }
 
     function excludeFromReward(address account) public onlyOwner {
@@ -291,10 +295,10 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
             uint256 tFee,
             uint256 tLiquidity
         ) = _getValues(tAmount);
-        _tOwned[sender] = _tOwned[sender] - tAmount;
-        _rOwned[sender] = _rOwned[sender] - rAmount;
-        _tOwned[recipient] = _tOwned[recipient] + tTransferAmount;
-        _rOwned[recipient] = _rOwned[recipient] + rTransferAmount;
+        _tOwned[sender] = _tOwned[sender].sub(tAmount);
+        _rOwned[sender] = _rOwned[sender].sub(rAmount);
+        _tOwned[recipient] = _tOwned[recipient].add(tTransferAmount);
+        _rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);
         _takeLiquidity(tLiquidity);
         _reflectFee(rFee, tFee);
         emit Transfer(sender, recipient, tTransferAmount);
@@ -317,7 +321,7 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
     }
 
     function setMaxTxPercent(uint256 maxTxPercent) external onlyOwner {
-        _maxTxAmount = (_tTotal * maxTxPercent) / (10**2);
+        _maxTxAmount = _tTotal.mul(maxTxPercent).div(10**2);
     }
 
     function setSwapAndLiquifyEnabled(bool _enabled) public onlyOwner {
@@ -328,8 +332,8 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
     receive() external payable {}
 
     function _reflectFee(uint256 rFee, uint256 tFee) private {
-        _rTotal = _rTotal - rFee;
-        _tFeeTotal = _tFeeTotal + tFee;
+        _rTotal = _rTotal.sub(rFee);
+        _tFeeTotal = _tFeeTotal.add(tFee);
     }
 
     function _getValues(uint256 tAmount)
@@ -369,7 +373,7 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
     {
         uint256 tFee = calculateTaxFee(tAmount);
         uint256 tLiquidity = calculateLiquidityFee(tAmount);
-        uint256 tTransferAmount = tAmount - tFee - tLiquidity;
+        uint256 tTransferAmount = tAmount.sub(tFee).sub(tLiquidity);
         return (tTransferAmount, tFee, tLiquidity);
     }
 
@@ -387,16 +391,16 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
             uint256
         )
     {
-        uint256 rAmount = tAmount * currentRate;
-        uint256 rFee = tFee * currentRate;
-        uint256 rLiquidity = tLiquidity * currentRate;
-        uint256 rTransferAmount = rAmount - rFee - rLiquidity;
+        uint256 rAmount = tAmount.mul(currentRate);
+        uint256 rFee = tFee.mul(currentRate);
+        uint256 rLiquidity = tLiquidity.mul(currentRate);
+        uint256 rTransferAmount = rAmount.sub(rFee).sub(rLiquidity);
         return (rAmount, rTransferAmount, rFee);
     }
 
     function _getRate() private view returns (uint256) {
         (uint256 rSupply, uint256 tSupply) = _getCurrentSupply();
-        return rSupply / tSupply;
+        return rSupply.div(tSupply);
     }
 
     function _getCurrentSupply() private view returns (uint256, uint256) {
@@ -407,23 +411,23 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
                 _rOwned[_excluded[i]] > rSupply ||
                 _tOwned[_excluded[i]] > tSupply
             ) return (_rTotal, _tTotal);
-            rSupply = rSupply - _rOwned[_excluded[i]];
-            tSupply = tSupply - _tOwned[_excluded[i]];
+            rSupply = rSupply.sub(_rOwned[_excluded[i]]);
+            tSupply = tSupply.sub(_tOwned[_excluded[i]]);
         }
-        if (rSupply < _rTotal / _tTotal) return (_rTotal, _tTotal);
+        if (rSupply < _rTotal.div(_tTotal)) return (_rTotal, _tTotal);
         return (rSupply, tSupply);
     }
 
     function _takeLiquidity(uint256 tLiquidity) private {
         uint256 currentRate = _getRate();
-        uint256 rLiquidity = tLiquidity * currentRate;
-        _rOwned[address(this)] = _rOwned[address(this)] + rLiquidity;
+        uint256 rLiquidity = tLiquidity.mul(currentRate);
+        _rOwned[address(this)] = _rOwned[address(this)].add(rLiquidity);
         if (_isExcluded[address(this)])
-            _tOwned[address(this)] = _tOwned[address(this)] + tLiquidity;
+            _tOwned[address(this)] = _tOwned[address(this)].add(tLiquidity);
     }
 
     function calculateTaxFee(uint256 _amount) private view returns (uint256) {
-        return (_amount * _taxFee) / (10**2);
+        return _amount.mul(_taxFee).div(10**2);
     }
 
     function calculateLiquidityFee(uint256 _amount)
@@ -431,7 +435,7 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
         view
         returns (uint256)
     {
-        return (_amount * _liquidityFee) / (10**2);
+        return _amount.mul(_liquidityFee).div(10**2);
     }
 
     function removeAllFee() private {
@@ -455,20 +459,14 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
 
     function _approve(
         address _owner,
-        address _spender,
-        uint256 _amount
+        address spender,
+        uint256 amount
     ) private {
-        require(
-            _owner != address(0),
-            "HungryPanda: approve from the zero address"
-        );
-        require(
-            _spender != address(0),
-            "HungryPanda: approve to the zero address"
-        );
+        require(_owner != address(0), "ERC20: approve from the zero address");
+        require(spender != address(0), "ERC20: approve to the zero address");
 
-        _allowances[_owner][_spender] = _amount;
-        emit Approval(_owner, _spender, _amount);
+        _allowances[_owner][spender] = amount;
+        emit Approval(_owner, spender, amount);
     }
 
     function _transfer(
@@ -476,11 +474,8 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
         address to,
         uint256 amount
     ) private {
-        require(
-            from != address(0),
-            "HungryPanda: transfer from the zero address"
-        );
-        require(to != address(0), "HungryPanda: transfer to the zero address");
+        require(from != address(0), "ERC20: transfer from the zero address");
+        require(to != address(0), "ERC20: transfer to the zero address");
         require(amount > 0, "Transfer amount must be greater than zero");
         if (from != owner() && to != owner())
             require(
@@ -517,14 +512,14 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
     }
 
     function swapAndLiquify(uint256 contractTokenBalance) private lockTheSwap {
-        uint256 half = contractTokenBalance / 2;
-        uint256 otherHalf = contractTokenBalance - half;
+        uint256 half = contractTokenBalance.div(2);
+        uint256 otherHalf = contractTokenBalance.sub(half);
 
         uint256 initialBalance = address(this).balance;
 
         swapTokensForEth(half);
 
-        uint256 newBalance = address(this).balance - initialBalance;
+        uint256 newBalance = address(this).balance.sub(initialBalance);
 
         addLiquidity(otherHalf, newBalance);
 
@@ -596,8 +591,8 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
             uint256 tFee,
             uint256 tLiquidity
         ) = _getValues(tAmount);
-        _rOwned[sender] = _rOwned[sender] - rAmount;
-        _rOwned[recipient] = _rOwned[recipient] + rTransferAmount;
+        _rOwned[sender] = _rOwned[sender].sub(rAmount);
+        _rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);
         _takeLiquidity(tLiquidity);
         _reflectFee(rFee, tFee);
         emit Transfer(sender, recipient, tTransferAmount);
@@ -616,9 +611,9 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
             uint256 tFee,
             uint256 tLiquidity
         ) = _getValues(tAmount);
-        _rOwned[sender] = _rOwned[sender] - rAmount;
-        _tOwned[recipient] = _tOwned[recipient] + tTransferAmount;
-        _rOwned[recipient] = _rOwned[recipient] + rTransferAmount;
+        _rOwned[sender] = _rOwned[sender].sub(rAmount);
+        _tOwned[recipient] = _tOwned[recipient].add(tTransferAmount);
+        _rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);
         _takeLiquidity(tLiquidity);
         _reflectFee(rFee, tFee);
         emit Transfer(sender, recipient, tTransferAmount);
@@ -637,11 +632,27 @@ contract Token is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
             uint256 tFee,
             uint256 tLiquidity
         ) = _getValues(tAmount);
-        _tOwned[sender] = _tOwned[sender] - tAmount;
-        _rOwned[sender] = _rOwned[sender] - rAmount;
-        _rOwned[recipient] = _rOwned[recipient] + rTransferAmount;
+        _tOwned[sender] = _tOwned[sender].sub(tAmount);
+        _rOwned[sender] = _rOwned[sender].sub(rAmount);
+        _rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);
         _takeLiquidity(tLiquidity);
         _reflectFee(rFee, tFee);
         emit Transfer(sender, recipient, tTransferAmount);
+    }
+
+    function pause() public virtual {
+        require(
+            hasRole(PAUSER_ROLE, _msgSender()),
+            "HungryPanda: must have pauser role to pause"
+        );
+        _pause();
+    }
+
+    function unpause() public virtual {
+        require(
+            hasRole(PAUSER_ROLE, _msgSender()),
+            "HungryPanda: must have pauser role to unpause"
+        );
+        _unpause();
     }
 }

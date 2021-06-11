@@ -3,5 +3,5 @@ node_modules/
 .env
 .address
 migrations/
-build/
 *.log
+pgit
