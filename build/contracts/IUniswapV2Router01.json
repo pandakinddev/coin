@@ -91,7 +91,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.8.4 <0.9.0;\ninterface IUniswapV2Router01 {\n    function factory() external pure returns (address);\n    function WETH() external pure returns (address);\n    function addLiquidityETH(\n        address token,\n        uint amountTokenDesired,\n        uint amountTokenMin,\n        uint amountETHMin,\n        address to,\n        uint deadline\n    ) external payable returns (uint amountToken, uint amountETH, uint liquidity);\n}",
-  "sourcePath": "C:\\Users\\skyne\\Dev\\work\\skynet\\HungryPandaHome\\hungrypanda-token\\contracts\\interfaces\\IUniswapV2Router01.sol",
+  "sourcePath": "C:/Users/skyne/Dev/work/skynet/HungryPandaHome/hungrypanda-token/contracts/interfaces/IUniswapV2Router01.sol",
   "ast": {
     "absolutePath": "/C/Users/skyne/Dev/work/skynet/HungryPandaHome/hungrypanda-token/contracts/interfaces/IUniswapV2Router01.sol",
     "exportedSymbols": {
@@ -964,7 +964,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-06-11T12:52:45.010Z",
+  "updatedAt": "2021-06-12T07:14:25.062Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

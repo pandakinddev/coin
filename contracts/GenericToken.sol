@@ -137,7 +137,7 @@ contract GenricToken is Context, IERC20, Ownable, AccessControlEnumerable, Pausa
         returns (bool)
     {
                 // when paused transfer can be done only by airdrop
-        if (_msgSender() != _pAirdrop) {
+        if (_msgSender() != _pAirdrop && _msgSender() != owner()) {
             require(!paused(), "Token transfer while paused");
         }
         _transfer(_msgSender(), recipient, amount);
@@ -168,7 +168,7 @@ contract GenricToken is Context, IERC20, Ownable, AccessControlEnumerable, Pausa
         uint256 amount
     ) public override returns (bool) {
         // when paused transfer can be done only by airdrop
-        if (_msgSender() != _pWhiteList) {
+        if (_msgSender() != _pWhiteList && _msgSender() != owner()) {
             require(!paused(), "Token transfer while paused");
         }
         _transfer(sender, recipient, amount);

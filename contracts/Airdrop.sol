@@ -9,6 +9,11 @@ contract Airdrop {
     uint256 public currentAirdropAmount;
     uint256 public maxAirdropAmount;
 
+    uint256 public immutable OPEN_TIME = block.timestamp;
+    uint256 private constant REG_TIME = 3 days;
+    uint256 private constant CLAIM_TIME = 2 days;
+    enum Status {REG, CLAIM, END }
+
     event AirdropProcessed(address recipient, uint256 amount, uint256 date);
 
     constructor(address _admin){
@@ -28,6 +33,16 @@ contract Airdrop {
         admin = newAdmin;
     }
 
+    function status() external view returns(Status){
+        uint256 since = block.timestamp - OPEN_TIME;
+        if(since <= REG_TIME){
+            return Status.REG;
+        }
+        if(since > REG_TIME && since <= REG_TIME + CLAIM_TIME){
+            return Status.CLAIM;
+        }
+        return Status.END;
+    }
     function claimTokens(
         address recipient,
         uint256 amount,
@@ -35,6 +50,9 @@ contract Airdrop {
     ) external {
         bytes32 message =
             prefixed(keccak256(abi.encodePacked(recipient, amount)));
+        // check time is in range OPEN_TIME + REG_TIME and 2 days after REG finshied
+        require(block.timestamp >= OPEN_TIME + REG_TIME, "registration in progress");
+        require(block.timestamp - OPEN_TIME + REG_TIME < CLAIM_TIME, "airdrop finished" );
         require(recoverSigner(message, signature) == admin, "wrong signature");
         require(
             processedAirdrops[recipient] == false,

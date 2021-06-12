@@ -11,9 +11,14 @@ const provider = new HDWalletProvider({
 });
 module.exports = {
   networks: {
-    test: {
+    development: {
       host: "127.0.0.1",
       port: 8545,
+      network_id: "*",
+    },
+    ganache: {
+      host: "127.0.0.1",
+      port: 7545,
       network_id: "*",
     },
     bscTest: {
@@ -55,7 +60,7 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.8.4",
+      version: "0.8.5",
       // docker: true,
       settings: {
         optimizer: {
