@@ -13,13 +13,12 @@ import "./interfaces/IUniswapV2Router02.sol";
 
 // WhiteList allowed to transaferFrom while paused
 // Airdrop allowed to transfer while paused
-contract GenricToken is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
+contract GenericToken is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
     using SafeMath for uint256;
     using Address for address;
 
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
-    address private _pAirdrop;
     address private _pWhiteList;
 
     mapping(address => uint256) private _rOwned;
@@ -29,6 +28,7 @@ contract GenricToken is Context, IERC20, Ownable, AccessControlEnumerable, Pausa
     mapping(address => bool) private _isExcludedFromFee;
 
     mapping(address => bool) private _isExcluded;
+    mapping(address => bool) private _unpausable;
     address[] private _excluded;
 
     uint256 private constant MAX = type(uint256).max;
@@ -75,17 +75,16 @@ contract GenricToken is Context, IERC20, Ownable, AccessControlEnumerable, Pausa
         uint256 _totalSupply,
         uint8 _vTaxFee,
         uint8 _maxTxAmountDiv,
-        address _router, address _airdrop, address _whiteList) {
+        address _router) {
+
         _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
         _setupRole(PAUSER_ROLE, _msgSender());
-        _setupRole(PAUSER_ROLE, _whiteList);
 
         _pName = _name;
         _pSymbol = _symbol;
         _tTotal = _totalSupply;
         _rTotal = (MAX - (MAX % _tTotal));
-        _pAirdrop = _airdrop;
-        _pWhiteList = _whiteList;
+        
         _taxFee = _vTaxFee;
         _previousTaxFee = _taxFee;
         _liquidityFee = _taxFee;
@@ -106,9 +105,22 @@ contract GenricToken is Context, IERC20, Ownable, AccessControlEnumerable, Pausa
         _isExcludedFromFee[address(this)] = true;
 
         emit Transfer(address(0), _msgSender(), _tTotal);
-        // pause after initialization
-        pause();
     }
+
+    modifier checkPausable(){
+        require(!paused() || _unpausable[_msgSender()]==true,"paused");
+        _;
+    }
+
+    function addUnpausable(address _target) external onlyOwner {
+        _unpausable[_target] = true;
+        _isExcludedFromFee[_target] = true;
+    }
+
+    function delUnpausable(address _target) external onlyOwner {
+        _unpausable[_target] = false;
+        _isExcludedFromFee[_target] = false;
+    } 
 
     function name() public view returns (string memory) {
         return _pName;
@@ -136,10 +148,6 @@ contract GenricToken is Context, IERC20, Ownable, AccessControlEnumerable, Pausa
         override
         returns (bool)
     {
-                // when paused transfer can be done only by airdrop
-        if (_msgSender() != _pAirdrop && _msgSender() != owner()) {
-            require(!paused(), "Token transfer while paused");
-        }
         _transfer(_msgSender(), recipient, amount);
         return true;
     }
@@ -168,9 +176,6 @@ contract GenricToken is Context, IERC20, Ownable, AccessControlEnumerable, Pausa
         uint256 amount
     ) public override returns (bool) {
         // when paused transfer can be done only by airdrop
-        if (_msgSender() != _pWhiteList && _msgSender() != owner()) {
-            require(!paused(), "Token transfer while paused");
-        }
         _transfer(sender, recipient, amount);
         _approve(
             sender,
@@ -473,7 +478,7 @@ contract GenricToken is Context, IERC20, Ownable, AccessControlEnumerable, Pausa
         address from,
         address to,
         uint256 amount
-    ) private {
+    ) private checkPausable {
         require(from != address(0), "ERC20: transfer from the zero address");
         require(to != address(0), "ERC20: transfer to the zero address");
         require(amount > 0, "Transfer amount must be greater than zero");

@@ -1,0 +1,3292 @@
+{
+  "contractName": "Timed",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_REG_TIME",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_CLAIM_TIME",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "CLAIM_TIME",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "INIT_TIME",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "REG_TIME",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "status",
+      "outputs": [
+        {
+          "internalType": "enum Timed.Status",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.5+commit.a4f2e591\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_REG_TIME\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_CLAIM_TIME\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"CLAIM_TIME\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"INIT_TIME\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"REG_TIME\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"status\",\"outputs\":[{\"internalType\":\"enum Timed.Status\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/C/Users/skyne/Dev/work/skynet/HungryPandaHome/hungrypanda-token/contracts/Timed.sol\":\"Timed\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/skyne/Dev/work/skynet/HungryPandaHome/hungrypanda-token/contracts/Timed.sol\":{\"keccak256\":\"0x4f0192f8a319a73319cb0d10086ba17657fffa22053f9acb8ae4b91cdc97c1d6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a219da0994c357abd2ec43e7436cb9523da081c12e1480e9317ad6c6f008b37\",\"dweb:/ipfs/QmZUgsVx7Gae7A178hetCYhzetvjMFwEwLCpeyQDoX2dVZ\"]}},\"version\":1}",
+  "bytecode": "0x60e060405234801561001057600080fd5b5060405161039138038061039183398101604081905261002f91610041565b4260805260a09190915260c052610065565b6000806040838503121561005457600080fd5b505080516020909101519092909150565b60805160a05160c0516102dd6100b460003960008181609001526101aa01526000818160c50152818161014e0152818161017d01526101cb01526000818160ec015261012501526102dd6000f3fe608060405234801561001057600080fd5b5060043610610068577c01000000000000000000000000000000000000000000000000000000006000350463200d2ed2811461006d5780633bcaba8b1461008b57806347f7b722146100c0578063fb841c6d146100e7575b600080fd5b61007561010e565b6040516100829190610208565b60405180910390f35b6100b27f000000000000000000000000000000000000000000000000000000000000000081565b604051908152602001610082565b6100b27f000000000000000000000000000000000000000000000000000000000000000081565b6100b27f000000000000000000000000000000000000000000000000000000000000000081565b600061011861011d565b905090565b60008061014a7f000000000000000000000000000000000000000000000000000000000000000042610261565b90507f0000000000000000000000000000000000000000000000000000000000000000811161017b57600091505090565b7f0000000000000000000000000000000000000000000000000000000000000000811180156101f357506101ef7f00000000000000000000000000000000000000000000000000000000000000007f0000000000000000000000000000000000000000000000000000000000000000610249565b8111155b1561020057600191505090565b600291505090565b6020810160038310610243577f4e487b7100000000000000000000000000000000000000000000000000000000600052602160045260246000fd5b91905290565b6000821982111561025c5761025c610278565b500190565b60008282101561027357610273610278565b500390565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fdfea2646970667358221220d9e24647ce092a920edd1d382d8fe64a5707638edebe7ddb7bb703f6142cae5d64736f6c63430008050033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b5060043610610068577c01000000000000000000000000000000000000000000000000000000006000350463200d2ed2811461006d5780633bcaba8b1461008b57806347f7b722146100c0578063fb841c6d146100e7575b600080fd5b61007561010e565b6040516100829190610208565b60405180910390f35b6100b27f000000000000000000000000000000000000000000000000000000000000000081565b604051908152602001610082565b6100b27f000000000000000000000000000000000000000000000000000000000000000081565b6100b27f000000000000000000000000000000000000000000000000000000000000000081565b600061011861011d565b905090565b60008061014a7f000000000000000000000000000000000000000000000000000000000000000042610261565b90507f0000000000000000000000000000000000000000000000000000000000000000811161017b57600091505090565b7f0000000000000000000000000000000000000000000000000000000000000000811180156101f357506101ef7f00000000000000000000000000000000000000000000000000000000000000007f0000000000000000000000000000000000000000000000000000000000000000610249565b8111155b1561020057600191505090565b600291505090565b6020810160038310610243577f4e487b7100000000000000000000000000000000000000000000000000000000600052602160045260246000fd5b91905290565b6000821982111561025c5761025c610278565b500190565b60008282101561027357610273610278565b500390565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fdfea2646970667358221220d9e24647ce092a920edd1d382d8fe64a5707638edebe7ddb7bb703f6142cae5d64736f6c63430008050033",
+  "immutableReferences": {
+    "2336": [
+      {
+        "length": 32,
+        "start": 236
+      },
+      {
+        "length": 32,
+        "start": 293
+      }
+    ],
+    "2338": [
+      {
+        "length": 32,
+        "start": 197
+      },
+      {
+        "length": 32,
+        "start": 334
+      },
+      {
+        "length": 32,
+        "start": 381
+      },
+      {
+        "length": 32,
+        "start": 459
+      }
+    ],
+    "2340": [
+      {
+        "length": 32,
+        "start": 144
+      },
+      {
+        "length": 32,
+        "start": 426
+      }
+    ]
+  },
+  "generatedSources": [
+    {
+      "ast": {
+        "nodeType": "YulBlock",
+        "src": "0:261:19",
+        "statements": [
+          {
+            "nodeType": "YulBlock",
+            "src": "6:3:19",
+            "statements": []
+          },
+          {
+            "body": {
+              "nodeType": "YulBlock",
+              "src": "112:147:19",
+              "statements": [
+                {
+                  "body": {
+                    "nodeType": "YulBlock",
+                    "src": "158:16:19",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "167:1:19",
+                              "type": "",
+                              "value": "0"
+                            },
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "170:1:19",
+                              "type": "",
+                              "value": "0"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "revert",
+                            "nodeType": "YulIdentifier",
+                            "src": "160:6:19"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "160:12:19"
+                        },
+                        "nodeType": "YulExpressionStatement",
+                        "src": "160:12:19"
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "name": "dataEnd",
+                            "nodeType": "YulIdentifier",
+                            "src": "133:7:19"
+                          },
+                          {
+                            "name": "headStart",
+                            "nodeType": "YulIdentifier",
+                            "src": "142:9:19"
+                          }
+                        ],
+                        "functionName": {
+                          "name": "sub",
+                          "nodeType": "YulIdentifier",
+                          "src": "129:3:19"
+                        },
+                        "nodeType": "YulFunctionCall",
+                        "src": "129:23:19"
+                      },
+                      {
+                        "kind": "number",
+                        "nodeType": "YulLiteral",
+                        "src": "154:2:19",
+                        "type": "",
+                        "value": "64"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "slt",
+                      "nodeType": "YulIdentifier",
+                      "src": "125:3:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "125:32:19"
+                  },
+                  "nodeType": "YulIf",
+                  "src": "122:2:19"
+                },
+                {
+                  "nodeType": "YulAssignment",
+                  "src": "183:26:19",
+                  "value": {
+                    "arguments": [
+                      {
+                        "name": "headStart",
+                        "nodeType": "YulIdentifier",
+                        "src": "199:9:19"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "mload",
+                      "nodeType": "YulIdentifier",
+                      "src": "193:5:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "193:16:19"
+                  },
+                  "variableNames": [
+                    {
+                      "name": "value0",
+                      "nodeType": "YulIdentifier",
+                      "src": "183:6:19"
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "YulAssignment",
+                  "src": "218:35:19",
+                  "value": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "name": "headStart",
+                            "nodeType": "YulIdentifier",
+                            "src": "238:9:19"
+                          },
+                          {
+                            "kind": "number",
+                            "nodeType": "YulLiteral",
+                            "src": "249:2:19",
+                            "type": "",
+                            "value": "32"
+                          }
+                        ],
+                        "functionName": {
+                          "name": "add",
+                          "nodeType": "YulIdentifier",
+                          "src": "234:3:19"
+                        },
+                        "nodeType": "YulFunctionCall",
+                        "src": "234:18:19"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "mload",
+                      "nodeType": "YulIdentifier",
+                      "src": "228:5:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "228:25:19"
+                  },
+                  "variableNames": [
+                    {
+                      "name": "value1",
+                      "nodeType": "YulIdentifier",
+                      "src": "218:6:19"
+                    }
+                  ]
+                }
+              ]
+            },
+            "name": "abi_decode_tuple_t_uint256t_uint256_fromMemory",
+            "nodeType": "YulFunctionDefinition",
+            "parameters": [
+              {
+                "name": "headStart",
+                "nodeType": "YulTypedName",
+                "src": "70:9:19",
+                "type": ""
+              },
+              {
+                "name": "dataEnd",
+                "nodeType": "YulTypedName",
+                "src": "81:7:19",
+                "type": ""
+              }
+            ],
+            "returnVariables": [
+              {
+                "name": "value0",
+                "nodeType": "YulTypedName",
+                "src": "93:6:19",
+                "type": ""
+              },
+              {
+                "name": "value1",
+                "nodeType": "YulTypedName",
+                "src": "101:6:19",
+                "type": ""
+              }
+            ],
+            "src": "14:245:19"
+          }
+        ]
+      },
+      "contents": "{\n    { }\n    function abi_decode_tuple_t_uint256t_uint256_fromMemory(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        value0 := mload(headStart)\n        value1 := mload(add(headStart, 32))\n    }\n}",
+      "id": 19,
+      "language": "Yul",
+      "name": "#utility.yul"
+    }
+  ],
+  "deployedGeneratedSources": [
+    {
+      "ast": {
+        "nodeType": "YulBlock",
+        "src": "0:1046:19",
+        "statements": [
+          {
+            "nodeType": "YulBlock",
+            "src": "6:3:19",
+            "statements": []
+          },
+          {
+            "body": {
+              "nodeType": "YulBlock",
+              "src": "124:286:19",
+              "statements": [
+                {
+                  "nodeType": "YulAssignment",
+                  "src": "134:26:19",
+                  "value": {
+                    "arguments": [
+                      {
+                        "name": "headStart",
+                        "nodeType": "YulIdentifier",
+                        "src": "146:9:19"
+                      },
+                      {
+                        "kind": "number",
+                        "nodeType": "YulLiteral",
+                        "src": "157:2:19",
+                        "type": "",
+                        "value": "32"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "add",
+                      "nodeType": "YulIdentifier",
+                      "src": "142:3:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "142:18:19"
+                  },
+                  "variableNames": [
+                    {
+                      "name": "tail",
+                      "nodeType": "YulIdentifier",
+                      "src": "134:4:19"
+                    }
+                  ]
+                },
+                {
+                  "body": {
+                    "nodeType": "YulBlock",
+                    "src": "202:168:19",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "223:1:19",
+                              "type": "",
+                              "value": "0"
+                            },
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "226:77:19",
+                              "type": "",
+                              "value": "35408467139433450592217433187231851964531694900788300625387963629091585785856"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "mstore",
+                            "nodeType": "YulIdentifier",
+                            "src": "216:6:19"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "216:88:19"
+                        },
+                        "nodeType": "YulExpressionStatement",
+                        "src": "216:88:19"
+                      },
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "324:1:19",
+                              "type": "",
+                              "value": "4"
+                            },
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "327:4:19",
+                              "type": "",
+                              "value": "0x21"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "mstore",
+                            "nodeType": "YulIdentifier",
+                            "src": "317:6:19"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "317:15:19"
+                        },
+                        "nodeType": "YulExpressionStatement",
+                        "src": "317:15:19"
+                      },
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "352:1:19",
+                              "type": "",
+                              "value": "0"
+                            },
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "355:4:19",
+                              "type": "",
+                              "value": "0x24"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "revert",
+                            "nodeType": "YulIdentifier",
+                            "src": "345:6:19"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "345:15:19"
+                        },
+                        "nodeType": "YulExpressionStatement",
+                        "src": "345:15:19"
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "name": "value0",
+                            "nodeType": "YulIdentifier",
+                            "src": "182:6:19"
+                          },
+                          {
+                            "kind": "number",
+                            "nodeType": "YulLiteral",
+                            "src": "190:1:19",
+                            "type": "",
+                            "value": "3"
+                          }
+                        ],
+                        "functionName": {
+                          "name": "lt",
+                          "nodeType": "YulIdentifier",
+                          "src": "179:2:19"
+                        },
+                        "nodeType": "YulFunctionCall",
+                        "src": "179:13:19"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "iszero",
+                      "nodeType": "YulIdentifier",
+                      "src": "172:6:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "172:21:19"
+                  },
+                  "nodeType": "YulIf",
+                  "src": "169:2:19"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "name": "headStart",
+                        "nodeType": "YulIdentifier",
+                        "src": "386:9:19"
+                      },
+                      {
+                        "name": "value0",
+                        "nodeType": "YulIdentifier",
+                        "src": "397:6:19"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "mstore",
+                      "nodeType": "YulIdentifier",
+                      "src": "379:6:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "379:25:19"
+                  },
+                  "nodeType": "YulExpressionStatement",
+                  "src": "379:25:19"
+                }
+              ]
+            },
+            "name": "abi_encode_tuple_t_enum$_Status_$2344__to_t_uint8__fromStack_reversed",
+            "nodeType": "YulFunctionDefinition",
+            "parameters": [
+              {
+                "name": "headStart",
+                "nodeType": "YulTypedName",
+                "src": "93:9:19",
+                "type": ""
+              },
+              {
+                "name": "value0",
+                "nodeType": "YulTypedName",
+                "src": "104:6:19",
+                "type": ""
+              }
+            ],
+            "returnVariables": [
+              {
+                "name": "tail",
+                "nodeType": "YulTypedName",
+                "src": "115:4:19",
+                "type": ""
+              }
+            ],
+            "src": "14:396:19"
+          },
+          {
+            "body": {
+              "nodeType": "YulBlock",
+              "src": "516:76:19",
+              "statements": [
+                {
+                  "nodeType": "YulAssignment",
+                  "src": "526:26:19",
+                  "value": {
+                    "arguments": [
+                      {
+                        "name": "headStart",
+                        "nodeType": "YulIdentifier",
+                        "src": "538:9:19"
+                      },
+                      {
+                        "kind": "number",
+                        "nodeType": "YulLiteral",
+                        "src": "549:2:19",
+                        "type": "",
+                        "value": "32"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "add",
+                      "nodeType": "YulIdentifier",
+                      "src": "534:3:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "534:18:19"
+                  },
+                  "variableNames": [
+                    {
+                      "name": "tail",
+                      "nodeType": "YulIdentifier",
+                      "src": "526:4:19"
+                    }
+                  ]
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "name": "headStart",
+                        "nodeType": "YulIdentifier",
+                        "src": "568:9:19"
+                      },
+                      {
+                        "name": "value0",
+                        "nodeType": "YulIdentifier",
+                        "src": "579:6:19"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "mstore",
+                      "nodeType": "YulIdentifier",
+                      "src": "561:6:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "561:25:19"
+                  },
+                  "nodeType": "YulExpressionStatement",
+                  "src": "561:25:19"
+                }
+              ]
+            },
+            "name": "abi_encode_tuple_t_uint256__to_t_uint256__fromStack_reversed",
+            "nodeType": "YulFunctionDefinition",
+            "parameters": [
+              {
+                "name": "headStart",
+                "nodeType": "YulTypedName",
+                "src": "485:9:19",
+                "type": ""
+              },
+              {
+                "name": "value0",
+                "nodeType": "YulTypedName",
+                "src": "496:6:19",
+                "type": ""
+              }
+            ],
+            "returnVariables": [
+              {
+                "name": "tail",
+                "nodeType": "YulTypedName",
+                "src": "507:4:19",
+                "type": ""
+              }
+            ],
+            "src": "415:177:19"
+          },
+          {
+            "body": {
+              "nodeType": "YulBlock",
+              "src": "645:80:19",
+              "statements": [
+                {
+                  "body": {
+                    "nodeType": "YulBlock",
+                    "src": "672:22:19",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [],
+                          "functionName": {
+                            "name": "panic_error_0x11",
+                            "nodeType": "YulIdentifier",
+                            "src": "674:16:19"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "674:18:19"
+                        },
+                        "nodeType": "YulExpressionStatement",
+                        "src": "674:18:19"
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "arguments": [
+                      {
+                        "name": "x",
+                        "nodeType": "YulIdentifier",
+                        "src": "661:1:19"
+                      },
+                      {
+                        "arguments": [
+                          {
+                            "name": "y",
+                            "nodeType": "YulIdentifier",
+                            "src": "668:1:19"
+                          }
+                        ],
+                        "functionName": {
+                          "name": "not",
+                          "nodeType": "YulIdentifier",
+                          "src": "664:3:19"
+                        },
+                        "nodeType": "YulFunctionCall",
+                        "src": "664:6:19"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "gt",
+                      "nodeType": "YulIdentifier",
+                      "src": "658:2:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "658:13:19"
+                  },
+                  "nodeType": "YulIf",
+                  "src": "655:2:19"
+                },
+                {
+                  "nodeType": "YulAssignment",
+                  "src": "703:16:19",
+                  "value": {
+                    "arguments": [
+                      {
+                        "name": "x",
+                        "nodeType": "YulIdentifier",
+                        "src": "714:1:19"
+                      },
+                      {
+                        "name": "y",
+                        "nodeType": "YulIdentifier",
+                        "src": "717:1:19"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "add",
+                      "nodeType": "YulIdentifier",
+                      "src": "710:3:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "710:9:19"
+                  },
+                  "variableNames": [
+                    {
+                      "name": "sum",
+                      "nodeType": "YulIdentifier",
+                      "src": "703:3:19"
+                    }
+                  ]
+                }
+              ]
+            },
+            "name": "checked_add_t_uint256",
+            "nodeType": "YulFunctionDefinition",
+            "parameters": [
+              {
+                "name": "x",
+                "nodeType": "YulTypedName",
+                "src": "628:1:19",
+                "type": ""
+              },
+              {
+                "name": "y",
+                "nodeType": "YulTypedName",
+                "src": "631:1:19",
+                "type": ""
+              }
+            ],
+            "returnVariables": [
+              {
+                "name": "sum",
+                "nodeType": "YulTypedName",
+                "src": "637:3:19",
+                "type": ""
+              }
+            ],
+            "src": "597:128:19"
+          },
+          {
+            "body": {
+              "nodeType": "YulBlock",
+              "src": "779:76:19",
+              "statements": [
+                {
+                  "body": {
+                    "nodeType": "YulBlock",
+                    "src": "801:22:19",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [],
+                          "functionName": {
+                            "name": "panic_error_0x11",
+                            "nodeType": "YulIdentifier",
+                            "src": "803:16:19"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "803:18:19"
+                        },
+                        "nodeType": "YulExpressionStatement",
+                        "src": "803:18:19"
+                      }
+                    ]
+                  },
+                  "condition": {
+                    "arguments": [
+                      {
+                        "name": "x",
+                        "nodeType": "YulIdentifier",
+                        "src": "795:1:19"
+                      },
+                      {
+                        "name": "y",
+                        "nodeType": "YulIdentifier",
+                        "src": "798:1:19"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "lt",
+                      "nodeType": "YulIdentifier",
+                      "src": "792:2:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "792:8:19"
+                  },
+                  "nodeType": "YulIf",
+                  "src": "789:2:19"
+                },
+                {
+                  "nodeType": "YulAssignment",
+                  "src": "832:17:19",
+                  "value": {
+                    "arguments": [
+                      {
+                        "name": "x",
+                        "nodeType": "YulIdentifier",
+                        "src": "844:1:19"
+                      },
+                      {
+                        "name": "y",
+                        "nodeType": "YulIdentifier",
+                        "src": "847:1:19"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "sub",
+                      "nodeType": "YulIdentifier",
+                      "src": "840:3:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "840:9:19"
+                  },
+                  "variableNames": [
+                    {
+                      "name": "diff",
+                      "nodeType": "YulIdentifier",
+                      "src": "832:4:19"
+                    }
+                  ]
+                }
+              ]
+            },
+            "name": "checked_sub_t_uint256",
+            "nodeType": "YulFunctionDefinition",
+            "parameters": [
+              {
+                "name": "x",
+                "nodeType": "YulTypedName",
+                "src": "761:1:19",
+                "type": ""
+              },
+              {
+                "name": "y",
+                "nodeType": "YulTypedName",
+                "src": "764:1:19",
+                "type": ""
+              }
+            ],
+            "returnVariables": [
+              {
+                "name": "diff",
+                "nodeType": "YulTypedName",
+                "src": "770:4:19",
+                "type": ""
+              }
+            ],
+            "src": "730:125:19"
+          },
+          {
+            "body": {
+              "nodeType": "YulBlock",
+              "src": "892:152:19",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "kind": "number",
+                        "nodeType": "YulLiteral",
+                        "src": "909:1:19",
+                        "type": "",
+                        "value": "0"
+                      },
+                      {
+                        "kind": "number",
+                        "nodeType": "YulLiteral",
+                        "src": "912:77:19",
+                        "type": "",
+                        "value": "35408467139433450592217433187231851964531694900788300625387963629091585785856"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "mstore",
+                      "nodeType": "YulIdentifier",
+                      "src": "902:6:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "902:88:19"
+                  },
+                  "nodeType": "YulExpressionStatement",
+                  "src": "902:88:19"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "kind": "number",
+                        "nodeType": "YulLiteral",
+                        "src": "1006:1:19",
+                        "type": "",
+                        "value": "4"
+                      },
+                      {
+                        "kind": "number",
+                        "nodeType": "YulLiteral",
+                        "src": "1009:4:19",
+                        "type": "",
+                        "value": "0x11"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "mstore",
+                      "nodeType": "YulIdentifier",
+                      "src": "999:6:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "999:15:19"
+                  },
+                  "nodeType": "YulExpressionStatement",
+                  "src": "999:15:19"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "kind": "number",
+                        "nodeType": "YulLiteral",
+                        "src": "1030:1:19",
+                        "type": "",
+                        "value": "0"
+                      },
+                      {
+                        "kind": "number",
+                        "nodeType": "YulLiteral",
+                        "src": "1033:4:19",
+                        "type": "",
+                        "value": "0x24"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "revert",
+                      "nodeType": "YulIdentifier",
+                      "src": "1023:6:19"
+                    },
+                    "nodeType": "YulFunctionCall",
+                    "src": "1023:15:19"
+                  },
+                  "nodeType": "YulExpressionStatement",
+                  "src": "1023:15:19"
+                }
+              ]
+            },
+            "name": "panic_error_0x11",
+            "nodeType": "YulFunctionDefinition",
+            "src": "860:184:19"
+          }
+        ]
+      },
+      "contents": "{\n    { }\n    function abi_encode_tuple_t_enum$_Status_$2344__to_t_uint8__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        if iszero(lt(value0, 3))\n        {\n            mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n            mstore(4, 0x21)\n            revert(0, 0x24)\n        }\n        mstore(headStart, value0)\n    }\n    function abi_encode_tuple_t_uint256__to_t_uint256__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, value0)\n    }\n    function checked_add_t_uint256(x, y) -> sum\n    {\n        if gt(x, not(y)) { panic_error_0x11() }\n        sum := add(x, y)\n    }\n    function checked_sub_t_uint256(x, y) -> diff\n    {\n        if lt(x, y) { panic_error_0x11() }\n        diff := sub(x, y)\n    }\n    function panic_error_0x11()\n    {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n}",
+      "id": 19,
+      "language": "Yul",
+      "name": "#utility.yul"
+    }
+  ],
+  "sourceMap": "65:870:3:-:0;;;242:159;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;315:15;303:27;;340:20;;;;;370:24;;65:870;;14:245:19;93:6;101;154:2;142:9;133:7;129:23;125:32;122:2;;;170:1;167;160:12;122:2;-1:-1:-1;;193:16:19;;249:2;234:18;;;228:25;193:16;;228:25;;-1:-1:-1;112:147:19:o;:::-;65:870:3;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "65:870:3:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;845:88;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;165:35;;;;;;;;561:25:19;;;549:2;534:18;165:35:3;516:76:19;126:33:3;;;;;86:34;;;;;845:88;893:6;917:9;:7;:9::i;:::-;910:16;;845:88;:::o;524:315::-;565:6;;599:27;617:9;599:15;:27;:::i;:::-;583:43;;648:8;639:5;:17;636:63;;678:10;671:17;;;524:315;:::o;636:63::-;719:8;711:5;:16;:50;;;;-1:-1:-1;740:21:3;751:10;740:8;:21;:::i;:::-;731:5;:30;;711:50;708:98;;;783:12;776:19;;;524:315;:::o;708:98::-;822:10;815:17;;;524:315;:::o;14:396:19:-;157:2;142:18;;190:1;179:13;;169:2;;226:77;223:1;216:88;327:4;324:1;317:15;355:4;352:1;345:15;169:2;379:25;;;124:286;:::o;597:128::-;637:3;668:1;664:6;661:1;658:13;655:2;;;674:18;;:::i;:::-;-1:-1:-1;710:9:19;;645:80::o;730:125::-;770:4;798:1;795;792:8;789:2;;;803:18;;:::i;:::-;-1:-1:-1;840:9:19;;779:76::o;860:184::-;912:77;909:1;902:88;1009:4;1006:1;999:15;1033:4;1030:1;1023:15",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.8.4 <0.9.0;\n\ncontract Timed {\n    uint256 public immutable INIT_TIME;\n    uint256 public immutable REG_TIME;\n    uint256 public immutable CLAIM_TIME;\n    enum Status {REG, CLAIM, END }\n\n    constructor(uint256 _REG_TIME, uint256 _CLAIM_TIME){\n        INIT_TIME = block.timestamp;\n        REG_TIME = _REG_TIME;\n        CLAIM_TIME = _CLAIM_TIME;\n    }\n\n    modifier onlyWhen(Status s) {\n        require(_status() == s, \"status condition was not met\");\n        _;\n    }\n\n    function _status() internal view returns(Status) {\n        uint256 since = block.timestamp - INIT_TIME;\n        if(since <= REG_TIME){\n            return Status.REG;\n        }\n        if(since > REG_TIME && since <= REG_TIME + CLAIM_TIME){\n            return Status.CLAIM;\n        }\n        return Status.END;\n    }\n\n    function status() external view virtual returns(Status){\n        return _status();\n    }\n}",
+  "sourcePath": "C:/Users/skyne/Dev/work/skynet/HungryPandaHome/hungrypanda-token/contracts/Timed.sol",
+  "ast": {
+    "absolutePath": "/C/Users/skyne/Dev/work/skynet/HungryPandaHome/hungrypanda-token/contracts/Timed.sol",
+    "exportedSymbols": {
+      "Timed": [
+        2430
+      ]
+    },
+    "id": 2431,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2334,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".4",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:31:3"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 2430,
+        "linearizedBaseContracts": [
+          2430
+        ],
+        "name": "Timed",
+        "nameLocation": "74:5:3",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "fb841c6d",
+            "id": 2336,
+            "mutability": "immutable",
+            "name": "INIT_TIME",
+            "nameLocation": "111:9:3",
+            "nodeType": "VariableDeclaration",
+            "scope": 2430,
+            "src": "86:34:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 2335,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "86:7:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "47f7b722",
+            "id": 2338,
+            "mutability": "immutable",
+            "name": "REG_TIME",
+            "nameLocation": "151:8:3",
+            "nodeType": "VariableDeclaration",
+            "scope": 2430,
+            "src": "126:33:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 2337,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "126:7:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "3bcaba8b",
+            "id": 2340,
+            "mutability": "immutable",
+            "name": "CLAIM_TIME",
+            "nameLocation": "190:10:3",
+            "nodeType": "VariableDeclaration",
+            "scope": 2430,
+            "src": "165:35:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 2339,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "165:7:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Timed.Status",
+            "id": 2344,
+            "members": [
+              {
+                "id": 2341,
+                "name": "REG",
+                "nameLocation": "219:3:3",
+                "nodeType": "EnumValue",
+                "src": "219:3:3"
+              },
+              {
+                "id": 2342,
+                "name": "CLAIM",
+                "nameLocation": "224:5:3",
+                "nodeType": "EnumValue",
+                "src": "224:5:3"
+              },
+              {
+                "id": 2343,
+                "name": "END",
+                "nameLocation": "231:3:3",
+                "nodeType": "EnumValue",
+                "src": "231:3:3"
+              }
+            ],
+            "name": "Status",
+            "nameLocation": "211:6:3",
+            "nodeType": "EnumDefinition",
+            "src": "206:30:3"
+          },
+          {
+            "body": {
+              "id": 2364,
+              "nodeType": "Block",
+              "src": "293:108:3",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 2354,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 2351,
+                      "name": "INIT_TIME",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2336,
+                      "src": "303:9:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "expression": {
+                        "id": 2352,
+                        "name": "block",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4294967292,
+                        "src": "315:5:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_block",
+                          "typeString": "block"
+                        }
+                      },
+                      "id": 2353,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "timestamp",
+                      "nodeType": "MemberAccess",
+                      "src": "315:15:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "303:27:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 2355,
+                  "nodeType": "ExpressionStatement",
+                  "src": "303:27:3"
+                },
+                {
+                  "expression": {
+                    "id": 2358,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 2356,
+                      "name": "REG_TIME",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2338,
+                      "src": "340:8:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 2357,
+                      "name": "_REG_TIME",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2346,
+                      "src": "351:9:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "340:20:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 2359,
+                  "nodeType": "ExpressionStatement",
+                  "src": "340:20:3"
+                },
+                {
+                  "expression": {
+                    "id": 2362,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 2360,
+                      "name": "CLAIM_TIME",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2340,
+                      "src": "370:10:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 2361,
+                      "name": "_CLAIM_TIME",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2348,
+                      "src": "383:11:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "370:24:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 2363,
+                  "nodeType": "ExpressionStatement",
+                  "src": "370:24:3"
+                }
+              ]
+            },
+            "id": 2365,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2349,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2346,
+                  "mutability": "mutable",
+                  "name": "_REG_TIME",
+                  "nameLocation": "262:9:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2365,
+                  "src": "254:17:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2345,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "254:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2348,
+                  "mutability": "mutable",
+                  "name": "_CLAIM_TIME",
+                  "nameLocation": "281:11:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2365,
+                  "src": "273:19:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2347,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "273:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "253:40:3"
+            },
+            "returnParameters": {
+              "id": 2350,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "293:0:3"
+            },
+            "scope": 2430,
+            "src": "242:159:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2379,
+              "nodeType": "Block",
+              "src": "435:83:3",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_enum$_Status_$2344",
+                          "typeString": "enum Timed.Status"
+                        },
+                        "id": 2374,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "arguments": [],
+                          "expression": {
+                            "argumentTypes": [],
+                            "id": 2371,
+                            "name": "_status",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2419,
+                            "src": "453:7:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_view$__$returns$_t_enum$_Status_$2344_$",
+                              "typeString": "function () view returns (enum Timed.Status)"
+                            }
+                          },
+                          "id": 2372,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "453:9:3",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_Status_$2344",
+                            "typeString": "enum Timed.Status"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "id": 2373,
+                          "name": "s",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2368,
+                          "src": "466:1:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_Status_$2344",
+                            "typeString": "enum Timed.Status"
+                          }
+                        },
+                        "src": "453:14:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "73746174757320636f6e646974696f6e20776173206e6f74206d6574",
+                        "id": 2375,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "469:30:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_b8d1c5b923058bbf871b041e4f7cb4304aaaa97d062118ad6dfd17f004f6ec4d",
+                          "typeString": "literal_string \"status condition was not met\""
+                        },
+                        "value": "status condition was not met"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_b8d1c5b923058bbf871b041e4f7cb4304aaaa97d062118ad6dfd17f004f6ec4d",
+                          "typeString": "literal_string \"status condition was not met\""
+                        }
+                      ],
+                      "id": 2370,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "445:7:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2376,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "445:55:3",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2377,
+                  "nodeType": "ExpressionStatement",
+                  "src": "445:55:3"
+                },
+                {
+                  "id": 2378,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "510:1:3"
+                }
+              ]
+            },
+            "id": 2380,
+            "name": "onlyWhen",
+            "nameLocation": "416:8:3",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 2369,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2368,
+                  "mutability": "mutable",
+                  "name": "s",
+                  "nameLocation": "432:1:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2380,
+                  "src": "425:8:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_Status_$2344",
+                    "typeString": "enum Timed.Status"
+                  },
+                  "typeName": {
+                    "id": 2367,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 2366,
+                      "name": "Status",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2344,
+                      "src": "425:6:3"
+                    },
+                    "referencedDeclaration": 2344,
+                    "src": "425:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_Status_$2344",
+                      "typeString": "enum Timed.Status"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "424:10:3"
+            },
+            "src": "407:111:3",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 2418,
+              "nodeType": "Block",
+              "src": "573:266:3",
+              "statements": [
+                {
+                  "assignments": [
+                    2387
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 2387,
+                      "mutability": "mutable",
+                      "name": "since",
+                      "nameLocation": "591:5:3",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 2418,
+                      "src": "583:13:3",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 2386,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "583:7:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 2392,
+                  "initialValue": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 2391,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "expression": {
+                        "id": 2388,
+                        "name": "block",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4294967292,
+                        "src": "599:5:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_block",
+                          "typeString": "block"
+                        }
+                      },
+                      "id": 2389,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "timestamp",
+                      "nodeType": "MemberAccess",
+                      "src": "599:15:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "-",
+                    "rightExpression": {
+                      "id": 2390,
+                      "name": "INIT_TIME",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2336,
+                      "src": "617:9:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "599:27:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "583:43:3"
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 2395,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 2393,
+                      "name": "since",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2387,
+                      "src": "639:5:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<=",
+                    "rightExpression": {
+                      "id": 2394,
+                      "name": "REG_TIME",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2338,
+                      "src": "648:8:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "639:17:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 2400,
+                  "nodeType": "IfStatement",
+                  "src": "636:63:3",
+                  "trueBody": {
+                    "id": 2399,
+                    "nodeType": "Block",
+                    "src": "657:42:3",
+                    "statements": [
+                      {
+                        "expression": {
+                          "expression": {
+                            "id": 2396,
+                            "name": "Status",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2344,
+                            "src": "678:6:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_Status_$2344_$",
+                              "typeString": "type(enum Timed.Status)"
+                            }
+                          },
+                          "id": 2397,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "REG",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2341,
+                          "src": "678:10:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_Status_$2344",
+                            "typeString": "enum Timed.Status"
+                          }
+                        },
+                        "functionReturnParameters": 2385,
+                        "id": 2398,
+                        "nodeType": "Return",
+                        "src": "671:17:3"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 2409,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 2403,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 2401,
+                        "name": "since",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2387,
+                        "src": "711:5:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": ">",
+                      "rightExpression": {
+                        "id": 2402,
+                        "name": "REG_TIME",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2338,
+                        "src": "719:8:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "711:16:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "&&",
+                    "rightExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 2408,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 2404,
+                        "name": "since",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2387,
+                        "src": "731:5:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "<=",
+                      "rightExpression": {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 2407,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "id": 2405,
+                          "name": "REG_TIME",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2338,
+                          "src": "740:8:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "+",
+                        "rightExpression": {
+                          "id": 2406,
+                          "name": "CLAIM_TIME",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2340,
+                          "src": "751:10:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "740:21:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "731:30:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "711:50:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 2414,
+                  "nodeType": "IfStatement",
+                  "src": "708:98:3",
+                  "trueBody": {
+                    "id": 2413,
+                    "nodeType": "Block",
+                    "src": "762:44:3",
+                    "statements": [
+                      {
+                        "expression": {
+                          "expression": {
+                            "id": 2410,
+                            "name": "Status",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2344,
+                            "src": "783:6:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_Status_$2344_$",
+                              "typeString": "type(enum Timed.Status)"
+                            }
+                          },
+                          "id": 2411,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "CLAIM",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2342,
+                          "src": "783:12:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_Status_$2344",
+                            "typeString": "enum Timed.Status"
+                          }
+                        },
+                        "functionReturnParameters": 2385,
+                        "id": 2412,
+                        "nodeType": "Return",
+                        "src": "776:19:3"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "expression": {
+                    "expression": {
+                      "id": 2415,
+                      "name": "Status",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2344,
+                      "src": "822:6:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_enum$_Status_$2344_$",
+                        "typeString": "type(enum Timed.Status)"
+                      }
+                    },
+                    "id": 2416,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "lValueRequested": false,
+                    "memberName": "END",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 2343,
+                    "src": "822:10:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_Status_$2344",
+                      "typeString": "enum Timed.Status"
+                    }
+                  },
+                  "functionReturnParameters": 2385,
+                  "id": 2417,
+                  "nodeType": "Return",
+                  "src": "815:17:3"
+                }
+              ]
+            },
+            "id": 2419,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_status",
+            "nameLocation": "533:7:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2381,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "540:2:3"
+            },
+            "returnParameters": {
+              "id": 2385,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2384,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2419,
+                  "src": "565:6:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_Status_$2344",
+                    "typeString": "enum Timed.Status"
+                  },
+                  "typeName": {
+                    "id": 2383,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 2382,
+                      "name": "Status",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2344,
+                      "src": "565:6:3"
+                    },
+                    "referencedDeclaration": 2344,
+                    "src": "565:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_Status_$2344",
+                      "typeString": "enum Timed.Status"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "564:8:3"
+            },
+            "scope": 2430,
+            "src": "524:315:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 2428,
+              "nodeType": "Block",
+              "src": "900:33:3",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 2425,
+                      "name": "_status",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2419,
+                      "src": "917:7:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$__$returns$_t_enum$_Status_$2344_$",
+                        "typeString": "function () view returns (enum Timed.Status)"
+                      }
+                    },
+                    "id": 2426,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "917:9:3",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_Status_$2344",
+                      "typeString": "enum Timed.Status"
+                    }
+                  },
+                  "functionReturnParameters": 2424,
+                  "id": 2427,
+                  "nodeType": "Return",
+                  "src": "910:16:3"
+                }
+              ]
+            },
+            "functionSelector": "200d2ed2",
+            "id": 2429,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "status",
+            "nameLocation": "854:6:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2420,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "860:2:3"
+            },
+            "returnParameters": {
+              "id": 2424,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2423,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2429,
+                  "src": "893:6:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_Status_$2344",
+                    "typeString": "enum Timed.Status"
+                  },
+                  "typeName": {
+                    "id": 2422,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 2421,
+                      "name": "Status",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2344,
+                      "src": "893:6:3"
+                    },
+                    "referencedDeclaration": 2344,
+                    "src": "893:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_Status_$2344",
+                      "typeString": "enum Timed.Status"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "892:8:3"
+            },
+            "scope": 2430,
+            "src": "845:88:3",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2431,
+        "src": "65:870:3",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:903:3"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/Users/skyne/Dev/work/skynet/HungryPandaHome/hungrypanda-token/contracts/Timed.sol",
+    "exportedSymbols": {
+      "Timed": [
+        2430
+      ]
+    },
+    "id": 2431,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2334,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.8",
+          ".4",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:31:3"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 2430,
+        "linearizedBaseContracts": [
+          2430
+        ],
+        "name": "Timed",
+        "nameLocation": "74:5:3",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "fb841c6d",
+            "id": 2336,
+            "mutability": "immutable",
+            "name": "INIT_TIME",
+            "nameLocation": "111:9:3",
+            "nodeType": "VariableDeclaration",
+            "scope": 2430,
+            "src": "86:34:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 2335,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "86:7:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "47f7b722",
+            "id": 2338,
+            "mutability": "immutable",
+            "name": "REG_TIME",
+            "nameLocation": "151:8:3",
+            "nodeType": "VariableDeclaration",
+            "scope": 2430,
+            "src": "126:33:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 2337,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "126:7:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "functionSelector": "3bcaba8b",
+            "id": 2340,
+            "mutability": "immutable",
+            "name": "CLAIM_TIME",
+            "nameLocation": "190:10:3",
+            "nodeType": "VariableDeclaration",
+            "scope": 2430,
+            "src": "165:35:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 2339,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "165:7:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Timed.Status",
+            "id": 2344,
+            "members": [
+              {
+                "id": 2341,
+                "name": "REG",
+                "nameLocation": "219:3:3",
+                "nodeType": "EnumValue",
+                "src": "219:3:3"
+              },
+              {
+                "id": 2342,
+                "name": "CLAIM",
+                "nameLocation": "224:5:3",
+                "nodeType": "EnumValue",
+                "src": "224:5:3"
+              },
+              {
+                "id": 2343,
+                "name": "END",
+                "nameLocation": "231:3:3",
+                "nodeType": "EnumValue",
+                "src": "231:3:3"
+              }
+            ],
+            "name": "Status",
+            "nameLocation": "211:6:3",
+            "nodeType": "EnumDefinition",
+            "src": "206:30:3"
+          },
+          {
+            "body": {
+              "id": 2364,
+              "nodeType": "Block",
+              "src": "293:108:3",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 2354,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 2351,
+                      "name": "INIT_TIME",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2336,
+                      "src": "303:9:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "expression": {
+                        "id": 2352,
+                        "name": "block",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4294967292,
+                        "src": "315:5:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_block",
+                          "typeString": "block"
+                        }
+                      },
+                      "id": 2353,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "timestamp",
+                      "nodeType": "MemberAccess",
+                      "src": "315:15:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "303:27:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 2355,
+                  "nodeType": "ExpressionStatement",
+                  "src": "303:27:3"
+                },
+                {
+                  "expression": {
+                    "id": 2358,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 2356,
+                      "name": "REG_TIME",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2338,
+                      "src": "340:8:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 2357,
+                      "name": "_REG_TIME",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2346,
+                      "src": "351:9:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "340:20:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 2359,
+                  "nodeType": "ExpressionStatement",
+                  "src": "340:20:3"
+                },
+                {
+                  "expression": {
+                    "id": 2362,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 2360,
+                      "name": "CLAIM_TIME",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2340,
+                      "src": "370:10:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 2361,
+                      "name": "_CLAIM_TIME",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2348,
+                      "src": "383:11:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "370:24:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 2363,
+                  "nodeType": "ExpressionStatement",
+                  "src": "370:24:3"
+                }
+              ]
+            },
+            "id": 2365,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nameLocation": "-1:-1:-1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2349,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2346,
+                  "mutability": "mutable",
+                  "name": "_REG_TIME",
+                  "nameLocation": "262:9:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2365,
+                  "src": "254:17:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2345,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "254:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2348,
+                  "mutability": "mutable",
+                  "name": "_CLAIM_TIME",
+                  "nameLocation": "281:11:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2365,
+                  "src": "273:19:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2347,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "273:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "253:40:3"
+            },
+            "returnParameters": {
+              "id": 2350,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "293:0:3"
+            },
+            "scope": 2430,
+            "src": "242:159:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2379,
+              "nodeType": "Block",
+              "src": "435:83:3",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_enum$_Status_$2344",
+                          "typeString": "enum Timed.Status"
+                        },
+                        "id": 2374,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "arguments": [],
+                          "expression": {
+                            "argumentTypes": [],
+                            "id": 2371,
+                            "name": "_status",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2419,
+                            "src": "453:7:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_view$__$returns$_t_enum$_Status_$2344_$",
+                              "typeString": "function () view returns (enum Timed.Status)"
+                            }
+                          },
+                          "id": 2372,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "453:9:3",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_Status_$2344",
+                            "typeString": "enum Timed.Status"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "id": 2373,
+                          "name": "s",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2368,
+                          "src": "466:1:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_Status_$2344",
+                            "typeString": "enum Timed.Status"
+                          }
+                        },
+                        "src": "453:14:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "hexValue": "73746174757320636f6e646974696f6e20776173206e6f74206d6574",
+                        "id": 2375,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "469:30:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_b8d1c5b923058bbf871b041e4f7cb4304aaaa97d062118ad6dfd17f004f6ec4d",
+                          "typeString": "literal_string \"status condition was not met\""
+                        },
+                        "value": "status condition was not met"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_b8d1c5b923058bbf871b041e4f7cb4304aaaa97d062118ad6dfd17f004f6ec4d",
+                          "typeString": "literal_string \"status condition was not met\""
+                        }
+                      ],
+                      "id": 2370,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
+                      "referencedDeclaration": 4294967278,
+                      "src": "445:7:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2376,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "445:55:3",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2377,
+                  "nodeType": "ExpressionStatement",
+                  "src": "445:55:3"
+                },
+                {
+                  "id": 2378,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "510:1:3"
+                }
+              ]
+            },
+            "id": 2380,
+            "name": "onlyWhen",
+            "nameLocation": "416:8:3",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 2369,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2368,
+                  "mutability": "mutable",
+                  "name": "s",
+                  "nameLocation": "432:1:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2380,
+                  "src": "425:8:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_Status_$2344",
+                    "typeString": "enum Timed.Status"
+                  },
+                  "typeName": {
+                    "id": 2367,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 2366,
+                      "name": "Status",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2344,
+                      "src": "425:6:3"
+                    },
+                    "referencedDeclaration": 2344,
+                    "src": "425:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_Status_$2344",
+                      "typeString": "enum Timed.Status"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "424:10:3"
+            },
+            "src": "407:111:3",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 2418,
+              "nodeType": "Block",
+              "src": "573:266:3",
+              "statements": [
+                {
+                  "assignments": [
+                    2387
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 2387,
+                      "mutability": "mutable",
+                      "name": "since",
+                      "nameLocation": "591:5:3",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 2418,
+                      "src": "583:13:3",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 2386,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "583:7:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 2392,
+                  "initialValue": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 2391,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "expression": {
+                        "id": 2388,
+                        "name": "block",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4294967292,
+                        "src": "599:5:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_block",
+                          "typeString": "block"
+                        }
+                      },
+                      "id": 2389,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "timestamp",
+                      "nodeType": "MemberAccess",
+                      "src": "599:15:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "-",
+                    "rightExpression": {
+                      "id": 2390,
+                      "name": "INIT_TIME",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2336,
+                      "src": "617:9:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "599:27:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "583:43:3"
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 2395,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "id": 2393,
+                      "name": "since",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2387,
+                      "src": "639:5:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "<=",
+                    "rightExpression": {
+                      "id": 2394,
+                      "name": "REG_TIME",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2338,
+                      "src": "648:8:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "639:17:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 2400,
+                  "nodeType": "IfStatement",
+                  "src": "636:63:3",
+                  "trueBody": {
+                    "id": 2399,
+                    "nodeType": "Block",
+                    "src": "657:42:3",
+                    "statements": [
+                      {
+                        "expression": {
+                          "expression": {
+                            "id": 2396,
+                            "name": "Status",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2344,
+                            "src": "678:6:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_Status_$2344_$",
+                              "typeString": "type(enum Timed.Status)"
+                            }
+                          },
+                          "id": 2397,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "REG",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2341,
+                          "src": "678:10:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_Status_$2344",
+                            "typeString": "enum Timed.Status"
+                          }
+                        },
+                        "functionReturnParameters": 2385,
+                        "id": 2398,
+                        "nodeType": "Return",
+                        "src": "671:17:3"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 2409,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 2403,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 2401,
+                        "name": "since",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2387,
+                        "src": "711:5:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": ">",
+                      "rightExpression": {
+                        "id": 2402,
+                        "name": "REG_TIME",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2338,
+                        "src": "719:8:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "711:16:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "&&",
+                    "rightExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 2408,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 2404,
+                        "name": "since",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2387,
+                        "src": "731:5:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "<=",
+                      "rightExpression": {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 2407,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "id": 2405,
+                          "name": "REG_TIME",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2338,
+                          "src": "740:8:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "+",
+                        "rightExpression": {
+                          "id": 2406,
+                          "name": "CLAIM_TIME",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2340,
+                          "src": "751:10:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "740:21:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "731:30:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "711:50:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 2414,
+                  "nodeType": "IfStatement",
+                  "src": "708:98:3",
+                  "trueBody": {
+                    "id": 2413,
+                    "nodeType": "Block",
+                    "src": "762:44:3",
+                    "statements": [
+                      {
+                        "expression": {
+                          "expression": {
+                            "id": 2410,
+                            "name": "Status",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2344,
+                            "src": "783:6:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_enum$_Status_$2344_$",
+                              "typeString": "type(enum Timed.Status)"
+                            }
+                          },
+                          "id": 2411,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "memberName": "CLAIM",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 2342,
+                          "src": "783:12:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_enum$_Status_$2344",
+                            "typeString": "enum Timed.Status"
+                          }
+                        },
+                        "functionReturnParameters": 2385,
+                        "id": 2412,
+                        "nodeType": "Return",
+                        "src": "776:19:3"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "expression": {
+                    "expression": {
+                      "id": 2415,
+                      "name": "Status",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2344,
+                      "src": "822:6:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_enum$_Status_$2344_$",
+                        "typeString": "type(enum Timed.Status)"
+                      }
+                    },
+                    "id": 2416,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "lValueRequested": false,
+                    "memberName": "END",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 2343,
+                    "src": "822:10:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_Status_$2344",
+                      "typeString": "enum Timed.Status"
+                    }
+                  },
+                  "functionReturnParameters": 2385,
+                  "id": 2417,
+                  "nodeType": "Return",
+                  "src": "815:17:3"
+                }
+              ]
+            },
+            "id": 2419,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_status",
+            "nameLocation": "533:7:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2381,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "540:2:3"
+            },
+            "returnParameters": {
+              "id": 2385,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2384,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2419,
+                  "src": "565:6:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_Status_$2344",
+                    "typeString": "enum Timed.Status"
+                  },
+                  "typeName": {
+                    "id": 2383,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 2382,
+                      "name": "Status",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2344,
+                      "src": "565:6:3"
+                    },
+                    "referencedDeclaration": 2344,
+                    "src": "565:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_Status_$2344",
+                      "typeString": "enum Timed.Status"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "564:8:3"
+            },
+            "scope": 2430,
+            "src": "524:315:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 2428,
+              "nodeType": "Block",
+              "src": "900:33:3",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 2425,
+                      "name": "_status",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2419,
+                      "src": "917:7:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$__$returns$_t_enum$_Status_$2344_$",
+                        "typeString": "function () view returns (enum Timed.Status)"
+                      }
+                    },
+                    "id": 2426,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "917:9:3",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_Status_$2344",
+                      "typeString": "enum Timed.Status"
+                    }
+                  },
+                  "functionReturnParameters": 2424,
+                  "id": 2427,
+                  "nodeType": "Return",
+                  "src": "910:16:3"
+                }
+              ]
+            },
+            "functionSelector": "200d2ed2",
+            "id": 2429,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "status",
+            "nameLocation": "854:6:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2420,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "860:2:3"
+            },
+            "returnParameters": {
+              "id": 2424,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2423,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2429,
+                  "src": "893:6:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_Status_$2344",
+                    "typeString": "enum Timed.Status"
+                  },
+                  "typeName": {
+                    "id": 2422,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 2421,
+                      "name": "Status",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 2344,
+                      "src": "893:6:3"
+                    },
+                    "referencedDeclaration": 2344,
+                    "src": "893:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_Status_$2344",
+                      "typeString": "enum Timed.Status"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "892:8:3"
+            },
+            "scope": 2430,
+            "src": "845:88:3",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2431,
+        "src": "65:870:3",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:903:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.5+commit.a4f2e591.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-06-12T15:17:14.813Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

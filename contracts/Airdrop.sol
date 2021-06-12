@@ -2,62 +2,42 @@
 pragma solidity >=0.8.4 <0.9.0;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
+
 contract Airdrop {
     address public admin;
     mapping(address => bool) public processedAirdrops;
-    IERC20 public token;
+    IERC20 public immutable token;
     uint256 public currentAirdropAmount;
-    uint256 public maxAirdropAmount;
-
-    uint256 public immutable OPEN_TIME = block.timestamp;
-    uint256 private constant REG_TIME = 3 days;
-    uint256 private constant CLAIM_TIME = 2 days;
-    enum Status {REG, CLAIM, END }
+    uint256 public immutable maxAirdropAmount;
 
     event AirdropProcessed(address recipient, uint256 amount, uint256 date);
 
-    constructor(address _admin){
+    constructor(address _admin,address _token,uint256 _maxAirdropAmount){
         admin = _admin;
+        token = IERC20(_token);
+        maxAirdropAmount = _maxAirdropAmount;
     }
 
     modifier onlyAdmin() {
         require(msg.sender == admin, "only admin");
         _;
     }
-    function initialize(address _token, uint256 _maxAmount) external onlyAdmin {
-        token = IERC20(_token);
-        maxAirdropAmount = _maxAmount;
-    }
 
-    function updateAdmin(address newAdmin) external onlyAdmin {       
+    function updateAdmin(address newAdmin) external virtual onlyAdmin {       
         admin = newAdmin;
     }
 
-    function status() external view returns(Status){
-        uint256 since = block.timestamp - OPEN_TIME;
-        if(since <= REG_TIME){
-            return Status.REG;
-        }
-        if(since > REG_TIME && since <= REG_TIME + CLAIM_TIME){
-            return Status.CLAIM;
-        }
-        return Status.END;
-    }
-    function claimTokens(
+    function _claimTokens(
         address recipient,
         uint256 amount,
         bytes calldata signature
-    ) external {
+    ) internal {
         bytes32 message =
             prefixed(keccak256(abi.encodePacked(recipient, amount)));
         // check time is in range OPEN_TIME + REG_TIME and 2 days after REG finshied
-        require(block.timestamp >= OPEN_TIME + REG_TIME, "registration in progress");
-        require(block.timestamp - OPEN_TIME + REG_TIME < CLAIM_TIME, "airdrop finished" );
         require(recoverSigner(message, signature) == admin, "wrong signature");
-        require(
-            processedAirdrops[recipient] == false,
-            "airdrop already processed"
-        );
+        require(processedAirdrops[recipient] == false,"airdrop already processed");
         require(
             currentAirdropAmount + amount <= maxAirdropAmount,
             "airdropped 100% of the tokens"
@@ -66,6 +46,13 @@ contract Airdrop {
         currentAirdropAmount += amount;
         token.transfer(recipient, amount);
         emit AirdropProcessed(recipient, amount, block.timestamp);
+    }
+
+    function claimTokens(
+        uint256 amount,
+        bytes calldata signature
+    ) external virtual {
+        _claimTokens(msg.sender, amount, signature);
     }
 
     function prefixed(bytes32 hash) internal pure returns (bytes32) {

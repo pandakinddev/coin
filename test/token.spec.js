@@ -1,8 +1,13 @@
+const fs = require("fs");
+const ethers = require('ethers');
+// contracts ...
 const PandaToken = artifacts.require("PandaToken");
-const Airdrop = artifacts.require("Airdrop");
+const Airdrop = artifacts.require("SimpleAirdrop");
+
+
 
 const toToken = (num) => {
-   return web3.utils.toWei(num.toString(), 'ether')
+   return web3.utils.toWei(num.toString(), 'gwei')
 }
 
 const assertEventOfType = function(response, eventName, index) {
@@ -18,7 +23,26 @@ const assertThrow = async function (action) {
     }
 }
 
+const createSignature = (recipient,amount,privKey) => {
+    const message = web3.utils.soliditySha3(
+        { t: 'address', v: recipient },
+        { t: 'uint256', v: amount }
+    ).toString('hex');
+    const { signature } = web3.eth.accounts.sign(
+        message,
+        privKey
+    );
+    return { signature, recipient, amount };
+};
+
+
+
+
 contract("PandaToken test", async accounts => {
+    const tokenOwner = accounts[0];
+    const airdropOwner = accounts[1];
+    const whiteListOwner = accounts[2];
+
     it("assert base token data", async () => {
         const instance = await PandaToken.deployed();
         const totalSupply = await instance.totalSupply();
@@ -27,80 +51,76 @@ contract("PandaToken test", async accounts => {
         assert.equal(name, 'Hungry Panda Token');
         const symbol = await instance.symbol();
         assert.equal(symbol, 'HUNGRYPANDA');
-        const balance = await instance.balanceOf(accounts[0]);
-        assert.equal(balance.toString(), '10000000000000000000000');
-    });
-
-    it("token must be paused after deployed", async () => {
-        const instance = await PandaToken.deployed();
-        const isPaused = await instance.paused();
-        assert.equal(isPaused, true);
+        const airdrop = await Airdrop.deployed();
+        const airBalance = await instance.balanceOf(airdrop.address);
+        const maxAmount = totalSupply.div(web3.utils.toBN('100'));
+        assert.equal(airBalance.toString(), maxAmount);
+        const leftBalance = await instance.balanceOf(tokenOwner);
+        assert.equal(leftBalance.toString(), totalSupply.sub(maxAmount).toString());
     });
 
     it("while token on pause no one except airdrop has permissions to transfer", async () => {
         const instance = await PandaToken.deployed();
-        // owner transfer to another account
-        let response = await instance.transfer(accounts[5], toToken(100), { from: accounts[0] });
-        assertEventOfType(response, "Transfer", 0);
         assertThrow(() => {
-            return instance.transfer(accounts[6], toToken(10), { from: accounts[5] });
+            return instance.transfer(accounts[5], toToken(100), { from: tokenOwner });
         });
-        const balance = await instance.balanceOf(accounts[5]);
-        assert.equal(balance.toString(), toToken(100).toString(), 'balance must remain same');
     });
 
     it("test airdrop is able to allocate tokens", async () => {
+        const mnemonic = fs.readFileSync(".secret").toString()
+        const airdropAdmin = ethers.Wallet.fromMnemonic(mnemonic, `m/44'/60'/0'/0/1`);
+        assert.equal(airdropOwner, airdropAdmin.address.toString(),'must be same');
         const instance = await PandaToken.deployed();
         const totalSupply = await instance.totalSupply();
         const airdrop = await Airdrop.deployed();
         
-        const initial = await airdrop.maxAirdropAmount();
+        const initial = await airdrop.currentAirdropAmount();
         assert.equal('0', initial.toString(), 'initial amount must be 0');
         const maxAmount = await airdrop.maxAirdropAmount();
-        assert.equal(totalSupply.div(20).toString(),maxAmount.toString());
+        const shouldBe = totalSupply.div(web3.utils.toBN('100')).toString();
+        assert.equal(shouldBe, maxAmount.toString(),"max amount should be same");
+        // lets transfer some tokens
+        // first we need to sign payload (recipient address + amount)
+        const hundred = toToken(100);
+        var { recipient, amount, signature } = createSignature(
+            accounts[9],
+            web3.utils.numberToHex(toToken(100)),
+            airdropAdmin.privateKey);
+        assert.equal(recipient, accounts[9], "must be same");
+        
+        let result = await airdrop.claimTokens(amount, signature, { from: recipient });
+        assertEventOfType(result, 'AirdropProcessed', 0);
+        // verify ballance ...
+        let balance = await instance.balanceOf(recipient);
+        assert.equal(hundred.toString(), balance.toString(), "balance must be 100 tokens");
+        // let's check that we can't transfer twice
+        assertThrow(() => {
+            return airdrop.claimTokens(amount, signature, { from: recipient });
+        });
+        balance = await instance.balanceOf(recipient);
+        assert.equal(hundred.toString(), balance.toString(), "balance must be same");
+        // wrong sign
+        var { recipient, amount, signature } = createSignature(
+            accounts[8],
+            web3.utils.numberToHex(toToken(100)),
+            ethers.Wallet.fromMnemonic(mnemonic, `m/44'/60'/0'/0/2`).privateKey);
+        assert.equal(recipient, accounts[8], "must be same");
+        assertThrow(() => {
+            return airdrop.claimTokens(amount, signature, { from: recipient });
+        });
+        balance = await instance.balanceOf(recipient);
+        assert.equal('0', balance.toString(), "balance must be zero");
+        // more then maximum ...
+        var { recipient, amount, signature } = createSignature(
+            accounts[8],
+            web3.utils.numberToHex(maxAmount),
+            airdropAdmin.privateKey);
+        assert.equal(recipient, accounts[8], "must be same");
+        assertThrow(() => {
+            return airdrop.claimTokens(amount, signature, { from: recipient });
+        });
+        balance = await instance.balanceOf(recipient);
+        assert.equal('0', balance.toString(), "balance must be zero");
     });
 
-    // it("should call a function that depends on a linked library", async () => {
-    //     const meta = await MetaCoin.deployed();
-    //     const outCoinBalance = await meta.getBalance.call(accounts[0]);
-    //     const metaCoinBalance = outCoinBalance.toNumber();
-    //     const outCoinBalanceEth = await meta.getBalanceInEth.call(accounts[0]);
-    //     const metaCoinEthBalance = outCoinBalanceEth.toNumber();
-    //     assert.equal(metaCoinEthBalance, 2 * metaCoinBalance);
-    // });
-
-    // it("should send coin correctly", async () => {
-    //     // Get initial balances of first and second account.
-    //     const account_one = accounts[0];
-    //     const account_two = accounts[1];
-
-    //     const amount = 10;
-
-    //     const instance = await MetaCoin.deployed();
-    //     const meta = instance;
-
-    //     const balance = await meta.getBalance.call(account_one);
-    //     const account_one_starting_balance = balance.toNumber();
-
-    //     balance = await meta.getBalance.call(account_two);
-    //     const account_two_starting_balance = balance.toNumber();
-    //     await meta.sendCoin(account_two, amount, { from: account_one });
-
-    //     balance = await meta.getBalance.call(account_one);
-    //     const account_one_ending_balance = balance.toNumber();
-
-    //     balance = await meta.getBalance.call(account_two);
-    //     const account_two_ending_balance = balance.toNumber();
-
-    //     assert.equal(
-    //         account_one_ending_balance,
-    //         account_one_starting_balance - amount,
-    //         "Amount wasn't correctly taken from the sender"
-    //     );
-    //     assert.equal(
-    //         account_two_ending_balance,
-    //         account_two_starting_balance + amount,
-    //         "Amount wasn't correctly sent to the receiver"
-    //     );
-    // });
 });
