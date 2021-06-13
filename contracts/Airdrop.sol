@@ -99,7 +99,10 @@ contract Airdrop {
             // final byte (first byte of the next 32 bytes)
             v := byte(0, mload(add(sig, 96)))
         }
-
+        // Golang compatibility
+        if (v == 0 || v == 1) {
+            v += 27;
+        }
         return (v, r, s);
     }
 }

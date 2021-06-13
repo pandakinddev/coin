@@ -28,10 +28,13 @@ const createSignature = (recipient,amount,privKey) => {
         { t: 'address', v: recipient },
         { t: 'uint256', v: amount }
     ).toString('hex');
+    console.log("RECIPIENT", recipient);
+    console.log("MESSAGE",message);
     const { signature } = web3.eth.accounts.sign(
         message,
         privKey
     );
+    console.log("SIGNATURE", signature);
     return { signature, recipient, amount };
 };
 
@@ -83,11 +86,10 @@ contract("PandaToken test", async accounts => {
         // first we need to sign payload (recipient address + amount)
         const hundred = toToken(100);
         var { recipient, amount, signature } = createSignature(
-            accounts[9],
+            accounts[8],
             web3.utils.numberToHex(toToken(100)),
             airdropAdmin.privateKey);
-        assert.equal(recipient, accounts[9], "must be same");
-        
+        assert.equal(recipient, accounts[8], "must be same");
         let result = await airdrop.claimTokens(amount, signature, { from: recipient });
         assertEventOfType(result, 'AirdropProcessed', 0);
         // verify ballance ...
@@ -101,10 +103,10 @@ contract("PandaToken test", async accounts => {
         assert.equal(hundred.toString(), balance.toString(), "balance must be same");
         // wrong sign
         var { recipient, amount, signature } = createSignature(
-            accounts[8],
+            accounts[9],
             web3.utils.numberToHex(toToken(100)),
             ethers.Wallet.fromMnemonic(mnemonic, `m/44'/60'/0'/0/2`).privateKey);
-        assert.equal(recipient, accounts[8], "must be same");
+        assert.equal(recipient, accounts[9], "must be same");
         assertThrow(() => {
             return airdrop.claimTokens(amount, signature, { from: recipient });
         });
@@ -112,10 +114,10 @@ contract("PandaToken test", async accounts => {
         assert.equal('0', balance.toString(), "balance must be zero");
         // more then maximum ...
         var { recipient, amount, signature } = createSignature(
-            accounts[8],
+            accounts[9],
             web3.utils.numberToHex(maxAmount),
             airdropAdmin.privateKey);
-        assert.equal(recipient, accounts[8], "must be same");
+        assert.equal(recipient, accounts[9], "must be same");
         assertThrow(() => {
             return airdrop.claimTokens(amount, signature, { from: recipient });
         });
