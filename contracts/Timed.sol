@@ -5,9 +5,9 @@ contract Timed {
     uint256 public immutable INIT_TIME;
     uint256 public immutable REG_TIME;
     uint256 public immutable CLAIM_TIME;
-    enum Status {REG, CLAIM, END }
+    enum Status {REG, CLAIM, END}
 
-    constructor(uint256 _REG_TIME, uint256 _CLAIM_TIME){
+    constructor(uint256 _REG_TIME, uint256 _CLAIM_TIME) {
         INIT_TIME = block.timestamp;
         REG_TIME = _REG_TIME;
         CLAIM_TIME = _CLAIM_TIME;
@@ -18,18 +18,29 @@ contract Timed {
         _;
     }
 
-    function _status() internal view returns(Status) {
+    function _status() internal view returns (Status) {
         uint256 since = block.timestamp - INIT_TIME;
-        if(since <= REG_TIME){
+        if (since <= REG_TIME) {
             return Status.REG;
         }
-        if(since > REG_TIME && since <= REG_TIME + CLAIM_TIME){
+        if (since > REG_TIME && since <= REG_TIME + CLAIM_TIME) {
             return Status.CLAIM;
         }
         return Status.END;
     }
 
-    function status() external view virtual returns(Status){
+    function status() external view virtual returns (Status) {
         return _status();
+    }
+
+    function nextStatusAfter() external view virtual returns (uint256) {
+        Status s = _status();
+        if (s == Status.REG) {
+            return REG_TIME - (block.timestamp - INIT_TIME);
+        }
+        if (s == Status.CLAIM) {
+            return (REG_TIME + CLAIM_TIME) - (block.timestamp - INIT_TIME);
+        }
+        return 0;
     }
 }
