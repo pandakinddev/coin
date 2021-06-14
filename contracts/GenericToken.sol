@@ -175,7 +175,6 @@ contract GenericToken is Context, IERC20, Ownable, AccessControlEnumerable, Paus
         address recipient,
         uint256 amount
     ) public override returns (bool) {
-        // when paused transfer can be done only by airdrop
         _transfer(sender, recipient, amount);
         _approve(
             sender,
