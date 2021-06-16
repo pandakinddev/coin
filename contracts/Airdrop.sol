@@ -3,7 +3,6 @@ pragma solidity >=0.8.4 <0.9.0;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-
 contract Airdrop {
     address public admin;
     mapping(address => bool) public processedAirdrops;
@@ -13,7 +12,11 @@ contract Airdrop {
 
     event AirdropProcessed(address recipient, uint256 amount, uint256 date);
 
-    constructor(address _admin,address _token,uint256 _maxAirdropAmount){
+    constructor(
+        address _admin,
+        address _token,
+        uint256 _maxAirdropAmount
+    ) {
         admin = _admin;
         token = IERC20(_token);
         maxAirdropAmount = _maxAirdropAmount;
@@ -24,7 +27,7 @@ contract Airdrop {
         _;
     }
 
-    function updateAdmin(address newAdmin) external virtual onlyAdmin {       
+    function updateAdmin(address newAdmin) external virtual onlyAdmin {
         admin = newAdmin;
     }
 
@@ -37,7 +40,10 @@ contract Airdrop {
             prefixed(keccak256(abi.encodePacked(recipient, amount)));
         // check time is in range OPEN_TIME + REG_TIME and 2 days after REG finshied
         require(recoverSigner(message, signature) == admin, "wrong signature");
-        require(processedAirdrops[recipient] == false,"airdrop already processed");
+        require(
+            processedAirdrops[recipient] == false,
+            "airdrop already processed"
+        );
         require(
             currentAirdropAmount + amount <= maxAirdropAmount,
             "airdropped 100% of the tokens"
@@ -48,10 +54,10 @@ contract Airdrop {
         emit AirdropProcessed(recipient, amount, block.timestamp);
     }
 
-    function claimTokens(
-        uint256 amount,
-        bytes calldata signature
-    ) external virtual {
+    function claimTokens(uint256 amount, bytes calldata signature)
+        external
+        virtual
+    {
         _claimTokens(msg.sender, amount, signature);
     }
 

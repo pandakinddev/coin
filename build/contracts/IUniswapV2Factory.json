@@ -26,7 +26,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.5+commit.a4f2e591\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"}],\"name\":\"createPair\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/C/Users/skyne/Dev/work/skynet/HungryPandaHome/token/contracts/interfaces/IUniswapV2Factory.sol\":\"IUniswapV2Factory\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/skyne/Dev/work/skynet/HungryPandaHome/token/contracts/interfaces/IUniswapV2Factory.sol\":{\"keccak256\":\"0x2b4f9357f57a2090ce630d0d1ce8fcfe8d8ca0b790692beb6b90e487bd3d72ec\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d61f570b33bc943176ba274f68dde77d1686456455a92807142e28a831b8f519\",\"dweb:/ipfs/QmbEWp1jtUEJeh9N679wsT7ebYhWPg6wPoHUCjD7Lhvykv\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.5+commit.a4f2e591\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"}],\"name\":\"createPair\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/skynet/Dev/work/HungryPanda/coin/contracts/interfaces/IUniswapV2Factory.sol\":\"IUniswapV2Factory\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/skynet/Dev/work/HungryPanda/coin/contracts/interfaces/IUniswapV2Factory.sol\":{\"keccak256\":\"0x2b4f9357f57a2090ce630d0d1ce8fcfe8d8ca0b790692beb6b90e487bd3d72ec\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d61f570b33bc943176ba274f68dde77d1686456455a92807142e28a831b8f519\",\"dweb:/ipfs/QmbEWp1jtUEJeh9N679wsT7ebYhWPg6wPoHUCjD7Lhvykv\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -35,20 +35,20 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.8.4 <0.9.0;\n\ninterface IUniswapV2Factory {\n    function createPair(address tokenA, address tokenB) external returns (address pair);\n}",
-  "sourcePath": "C:/Users/skyne/Dev/work/skynet/HungryPandaHome/token/contracts/interfaces/IUniswapV2Factory.sol",
+  "sourcePath": "/Users/skynet/Dev/work/HungryPanda/coin/contracts/interfaces/IUniswapV2Factory.sol",
   "ast": {
-    "absolutePath": "/C/Users/skyne/Dev/work/skynet/HungryPandaHome/token/contracts/interfaces/IUniswapV2Factory.sol",
+    "absolutePath": "/Users/skynet/Dev/work/HungryPanda/coin/contracts/interfaces/IUniswapV2Factory.sol",
     "exportedSymbols": {
       "IUniswapV2Factory": [
-        109
+        2556
       ]
     },
-    "id": 110,
+    "id": 2557,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 99,
+        "id": 2546,
         "literals": [
           "solidity",
           ">=",
@@ -59,7 +59,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "32:31:1"
+        "src": "32:31:6"
       },
       {
         "abstract": false,
@@ -67,36 +67,36 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 109,
+        "id": 2556,
         "linearizedBaseContracts": [
-          109
+          2556
         ],
         "name": "IUniswapV2Factory",
-        "nameLocation": "75:17:1",
+        "nameLocation": "75:17:6",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "c9c65396",
-            "id": 108,
+            "id": 2555,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "createPair",
-            "nameLocation": "108:10:1",
+            "nameLocation": "108:10:6",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 104,
+              "id": 2551,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 101,
+                  "id": 2548,
                   "mutability": "mutable",
                   "name": "tokenA",
-                  "nameLocation": "127:6:1",
+                  "nameLocation": "127:6:6",
                   "nodeType": "VariableDeclaration",
-                  "scope": 108,
-                  "src": "119:14:1",
+                  "scope": 2555,
+                  "src": "119:14:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -104,10 +104,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 100,
+                    "id": 2547,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "119:7:1",
+                    "src": "119:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -118,13 +118,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 103,
+                  "id": 2550,
                   "mutability": "mutable",
                   "name": "tokenB",
-                  "nameLocation": "143:6:1",
+                  "nameLocation": "143:6:6",
                   "nodeType": "VariableDeclaration",
-                  "scope": 108,
-                  "src": "135:14:1",
+                  "scope": 2555,
+                  "src": "135:14:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -132,10 +132,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 102,
+                    "id": 2549,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "135:7:1",
+                    "src": "135:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -145,21 +145,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "118:32:1"
+              "src": "118:32:6"
             },
             "returnParameters": {
-              "id": 107,
+              "id": 2554,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 106,
+                  "id": 2553,
                   "mutability": "mutable",
                   "name": "pair",
-                  "nameLocation": "177:4:1",
+                  "nameLocation": "177:4:6",
                   "nodeType": "VariableDeclaration",
-                  "scope": 108,
-                  "src": "169:12:1",
+                  "scope": 2555,
+                  "src": "169:12:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -167,10 +167,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 105,
+                    "id": 2552,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "169:7:1",
+                    "src": "169:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -180,35 +180,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "168:14:1"
+              "src": "168:14:6"
             },
-            "scope": 109,
-            "src": "99:84:1",
+            "scope": 2556,
+            "src": "99:84:6",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 110,
-        "src": "65:120:1",
+        "scope": 2557,
+        "src": "65:120:6",
         "usedErrors": []
       }
     ],
-    "src": "32:153:1"
+    "src": "32:153:6"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/skyne/Dev/work/skynet/HungryPandaHome/token/contracts/interfaces/IUniswapV2Factory.sol",
+    "absolutePath": "/Users/skynet/Dev/work/HungryPanda/coin/contracts/interfaces/IUniswapV2Factory.sol",
     "exportedSymbols": {
       "IUniswapV2Factory": [
-        109
+        2556
       ]
     },
-    "id": 110,
+    "id": 2557,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 99,
+        "id": 2546,
         "literals": [
           "solidity",
           ">=",
@@ -219,7 +219,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "32:31:1"
+        "src": "32:31:6"
       },
       {
         "abstract": false,
@@ -227,36 +227,36 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 109,
+        "id": 2556,
         "linearizedBaseContracts": [
-          109
+          2556
         ],
         "name": "IUniswapV2Factory",
-        "nameLocation": "75:17:1",
+        "nameLocation": "75:17:6",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "c9c65396",
-            "id": 108,
+            "id": 2555,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "createPair",
-            "nameLocation": "108:10:1",
+            "nameLocation": "108:10:6",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 104,
+              "id": 2551,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 101,
+                  "id": 2548,
                   "mutability": "mutable",
                   "name": "tokenA",
-                  "nameLocation": "127:6:1",
+                  "nameLocation": "127:6:6",
                   "nodeType": "VariableDeclaration",
-                  "scope": 108,
-                  "src": "119:14:1",
+                  "scope": 2555,
+                  "src": "119:14:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -264,10 +264,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 100,
+                    "id": 2547,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "119:7:1",
+                    "src": "119:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -278,13 +278,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 103,
+                  "id": 2550,
                   "mutability": "mutable",
                   "name": "tokenB",
-                  "nameLocation": "143:6:1",
+                  "nameLocation": "143:6:6",
                   "nodeType": "VariableDeclaration",
-                  "scope": 108,
-                  "src": "135:14:1",
+                  "scope": 2555,
+                  "src": "135:14:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -292,10 +292,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 102,
+                    "id": 2549,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "135:7:1",
+                    "src": "135:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -305,21 +305,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "118:32:1"
+              "src": "118:32:6"
             },
             "returnParameters": {
-              "id": 107,
+              "id": 2554,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 106,
+                  "id": 2553,
                   "mutability": "mutable",
                   "name": "pair",
-                  "nameLocation": "177:4:1",
+                  "nameLocation": "177:4:6",
                   "nodeType": "VariableDeclaration",
-                  "scope": 108,
-                  "src": "169:12:1",
+                  "scope": 2555,
+                  "src": "169:12:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -327,10 +327,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 105,
+                    "id": 2552,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "169:7:1",
+                    "src": "169:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -340,21 +340,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "168:14:1"
+              "src": "168:14:6"
             },
-            "scope": 109,
-            "src": "99:84:1",
+            "scope": 2556,
+            "src": "99:84:6",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 110,
-        "src": "65:120:1",
+        "scope": 2557,
+        "src": "65:120:6",
         "usedErrors": []
       }
     ],
-    "src": "32:153:1"
+    "src": "32:153:6"
   },
   "compiler": {
     "name": "solc",
@@ -362,7 +362,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-06-13T08:41:32.720Z",
+  "updatedAt": "2021-06-16T18:23:58.366Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

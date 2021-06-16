@@ -2,45 +2,29 @@
 pragma solidity >=0.8.4 <0.9.0;
 
 contract Timed {
-    uint256 public immutable INIT_TIME;
-    uint256 public immutable REG_TIME;
-    uint256 public immutable CLAIM_TIME;
+    uint256 public immutable OPENING_TIME;
+    uint256 public immutable CLOSING_TIME;
     enum Status {REG, CLAIM, END}
 
-    constructor(uint256 _REG_TIME, uint256 _CLAIM_TIME) {
-        INIT_TIME = block.timestamp;
-        REG_TIME = _REG_TIME;
-        CLAIM_TIME = _CLAIM_TIME;
+    constructor(uint256 _openingTime, uint256 _closingTime) {
+        require(block.timestamp <= _openingTime);
+        require(_openingTime < _closingTime);
+        OPENING_TIME = _openingTime;
+        CLOSING_TIME = _closingTime;
     }
 
-    modifier onlyWhen(Status s) {
-        require(_status() == s, "status condition was not met");
+    modifier onlyWhileOpen() {
+        require(
+            block.timestamp >= OPENING_TIME && block.timestamp <= CLOSING_TIME
+        );
         _;
     }
 
-    function _status() internal view returns (Status) {
-        uint256 since = block.timestamp - INIT_TIME;
-        if (since <= REG_TIME) {
-            return Status.REG;
-        }
-        if (since > REG_TIME && since <= REG_TIME + CLAIM_TIME) {
-            return Status.CLAIM;
-        }
-        return Status.END;
+    function hasOpened() public view virtual returns (bool) {
+        return block.timestamp >= OPENING_TIME;
     }
 
-    function status() external view virtual returns (Status) {
-        return _status();
-    }
-
-    function nextStatusAfter() external view virtual returns (uint256) {
-        Status s = _status();
-        if (s == Status.REG) {
-            return REG_TIME - (block.timestamp - INIT_TIME);
-        }
-        if (s == Status.CLAIM) {
-            return (REG_TIME + CLAIM_TIME) - (block.timestamp - INIT_TIME);
-        }
-        return 0;
+    function hasClosed() public view virtual returns (bool) {
+        return block.timestamp > CLOSING_TIME;
     }
 }

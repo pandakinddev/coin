@@ -13,7 +13,13 @@ import "./interfaces/IUniswapV2Router02.sol";
 
 // WhiteList allowed to transaferFrom while paused
 // Airdrop allowed to transfer while paused
-contract GenericToken is Context, IERC20, Ownable, AccessControlEnumerable, Pausable {
+contract GenericToken is
+    Context,
+    IERC20,
+    Ownable,
+    AccessControlEnumerable,
+    Pausable
+{
     using SafeMath for uint256;
     using Address for address;
 
@@ -28,7 +34,7 @@ contract GenericToken is Context, IERC20, Ownable, AccessControlEnumerable, Paus
     mapping(address => bool) private _isExcludedFromFee;
 
     mapping(address => bool) private _isExcluded;
-    mapping(address => bool) private _unpausable;
+    mapping(address => uint256) private _unpausable;
     address[] private _excluded;
 
     uint256 private constant MAX = type(uint256).max;
@@ -36,7 +42,7 @@ contract GenericToken is Context, IERC20, Ownable, AccessControlEnumerable, Paus
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
 
-    string private  _pName;
+    string private _pName;
     string private _pSymbol;
     uint8 private _decimals = 9;
 
@@ -75,8 +81,8 @@ contract GenericToken is Context, IERC20, Ownable, AccessControlEnumerable, Paus
         uint256 _totalSupply,
         uint8 _vTaxFee,
         uint8 _maxTxAmountDiv,
-        address _router) {
-
+        address _router
+    ) {
         _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
         _setupRole(PAUSER_ROLE, _msgSender());
 
@@ -84,7 +90,7 @@ contract GenericToken is Context, IERC20, Ownable, AccessControlEnumerable, Paus
         _pSymbol = _symbol;
         _tTotal = _totalSupply;
         _rTotal = (MAX - (MAX % _tTotal));
-        
+
         _taxFee = _vTaxFee;
         _previousTaxFee = _taxFee;
         _liquidityFee = _taxFee;
@@ -93,8 +99,7 @@ contract GenericToken is Context, IERC20, Ownable, AccessControlEnumerable, Paus
         numTokensSellToAddToLiquidity = _rTotal.div(_maxTxAmountDiv);
         _rOwned[_msgSender()] = _rTotal;
 
-        IUniswapV2Router02 _uniswapV2Router =
-            IUniswapV2Router02(_router);
+        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(_router);
 
         uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory())
             .createPair(address(this), _uniswapV2Router.WETH());
@@ -107,20 +112,27 @@ contract GenericToken is Context, IERC20, Ownable, AccessControlEnumerable, Paus
         emit Transfer(address(0), _msgSender(), _tTotal);
     }
 
-    modifier checkPausable(){
-        require(!paused() || _unpausable[_msgSender()]==true,"paused");
+    modifier checkPausable(address _recipient, uint256 _amount) {
+        if (paused() && _msgSender() != owner()) {
+            uint256 allowed = _unpausable[_recipient];
+            require(allowed >= _amount, "token paused");
+            _unpausable[_msgSender()] = allowed - _amount;
+        }
         _;
     }
 
-    function addUnpausable(address _target) external onlyOwner {
-        _unpausable[_target] = true;
+    function addUnpausable(address _target, uint256 _maxAmount)
+        external
+        onlyOwner
+    {
+        _unpausable[_target] = _maxAmount;
         _isExcludedFromFee[_target] = true;
     }
 
     function delUnpausable(address _target) external onlyOwner {
-        _unpausable[_target] = false;
+        _unpausable[_target] = 0;
         _isExcludedFromFee[_target] = false;
-    } 
+    }
 
     function name() public view returns (string memory) {
         return _pName;
@@ -477,7 +489,7 @@ contract GenericToken is Context, IERC20, Ownable, AccessControlEnumerable, Paus
         address from,
         address to,
         uint256 amount
-    ) private checkPausable {
+    ) private checkPausable(to, amount) {
         require(from != address(0), "ERC20: transfer from the zero address");
         require(to != address(0), "ERC20: transfer to the zero address");
         require(amount > 0, "Transfer amount must be greater than zero");
